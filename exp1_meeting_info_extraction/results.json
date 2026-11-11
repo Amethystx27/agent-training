@@ -1,0 +1,152 @@
+[
+  {
+    "prompt_version": 1,
+    "sample": "sample_meeting_notice",
+    "json_valid": true,
+    "field_completeness": 1.0,
+    "fee_categories_captured": 1,
+    "error": "",
+    "result": {
+      "conference_name": "The 7th International Conference on Big Data and Analytics (ICCBDA 2027)",
+      "date": "2027-04-15",
+      "location": "Beijing, China",
+      "theme": "Big Data and Analytics",
+      "submission_deadline": "2026-12-01",
+      "registration_fees": [
+        {
+          "currency": "USD",
+          "amount": 500.0,
+          "category": "Regular"
+        }
+      ]
+    }
+  },
+  {
+    "prompt_version": 1,
+    "sample": "sample_meeting_notice_multi",
+    "json_valid": true,
+    "field_completeness": 1.0,
+    "fee_categories_captured": 4,
+    "error": "",
+    "result": {
+      "conference_name": "The 15th International Conference on Machine Learning and Applications (ICMLA 2026)",
+      "date": "2026-12-12",
+      "location": "Sanya, China",
+      "theme": "machine learning, deep learning and their real-world applications",
+      "submission_deadline": "2026-08-30",
+      "registration_fees": [
+        {
+          "currency": "CNY",
+          "amount": 3800.0,
+          "category": "Early Bird (before Oct 1)"
+        },
+        {
+          "currency": "CNY",
+          "amount": 4800.0,
+          "category": "Regular"
+        },
+        {
+          "currency": "CNY",
+          "amount": 2600.0,
+          "category": "Student"
+        },
+        {
+          "currency": "CNY",
+          "amount": 5500.0,
+          "category": "On-site"
+        }
+      ]
+    }
+  },
+  {
+    "prompt_version": 1,
+    "sample": "sample_meeting_notice_hard",
+    "json_valid": true,
+    "field_completeness": 0.3333333333333333,
+    "fee_categories_captured": 0,
+    "error": "",
+    "result": {
+      "conference_name": "Global AI Ethics Symposium",
+      "date": null,
+      "location": "Tokyo, Japan",
+      "theme": null,
+      "submission_deadline": null,
+      "registration_fees": []
+    }
+  },
+  {
+    "prompt_version": 2,
+    "sample": "sample_meeting_notice",
+    "json_valid": true,
+    "field_completeness": 1.0,
+    "fee_categories_captured": 1,
+    "error": "",
+    "result": {
+      "conference_name": "The 7th International Conference on Big Data and Analytics (ICCBDA 2027)",
+      "date": "2027-04-15",
+      "location": "Beijing, China",
+      "theme": "Big Data and Analytics",
+      "submission_deadline": "2026-12-01",
+      "registration_fees": [
+        {
+          "currency": "USD",
+          "amount": 500.0,
+          "category": "Regular"
+        }
+      ]
+    }
+  },
+  {
+    "prompt_version": 2,
+    "sample": "sample_meeting_notice_multi",
+    "json_valid": true,
+    "field_completeness": 1.0,
+    "fee_categories_captured": 4,
+    "error": "",
+    "result": {
+      "conference_name": "The 15th International Conference on Machine Learning and Applications (ICMLA 2026)",
+      "date": "2026-12-12",
+      "location": "Sanya, China",
+      "theme": "machine learning, deep learning and their real-world applications",
+      "submission_deadline": "2026-08-30",
+      "registration_fees": [
+        {
+          "currency": "CNY",
+          "amount": 3800.0,
+          "category": "Early Bird"
+        },
+        {
+          "currency": "CNY",
+          "amount": 4800.0,
+          "category": "Regular"
+        },
+        {
+          "currency": "CNY",
+          "amount": 2600.0,
+          "category": "Student"
+        },
+        {
+          "currency": "CNY",
+          "amount": 5500.0,
+          "category": "On-site"
+        }
+      ]
+    }
+  },
+  {
+    "prompt_version": 2,
+    "sample": "sample_meeting_notice_hard",
+    "json_valid": true,
+    "field_completeness": 0.5,
+    "fee_categories_captured": 0,
+    "error": "",
+    "result": {
+      "conference_name": "The Global AI Ethics Symposium",
+      "date": null,
+      "location": "Tokyo, Japan",
+      "theme": "AI Ethics",
+      "submission_deadline": null,
+      "registration_fees": []
+    }
+  }
+]

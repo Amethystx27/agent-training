@@ -7,14 +7,16 @@
 作业要求：
   - 输出合法 JSON，前后不得附加任何解释文字
   - 文本中未明确提供的信息一律用 null，严禁模型猜测
-  - 日期统一为 YYYY-MM-DD；费用保留 币种 / 金额 / 适用类别
+  - 日期统一为 YYYY-MM-DD；费用由对象升级为「多类别 / 多收费阶段」的数组
   - 程序必须解析 JSON 并校验：字段完整性、日期格式、数据类型
 
 运行方式：
   1) 安装依赖:  pip install -r requirements.txt
   2) 配置密钥:  复制 .env.example 为 .env，填入导师给的 API_KEY / API_BASE / MODEL
-  3) 运行:      python main.py sample_meeting_notice.txt
-  4) 无密钥自测: python main.py --mock     （跳过 API，只验证解析+校验逻辑）
+  3) 运行(基础版Prompt): python main.py sample_meeting_notice.txt
+  4) 运行(改进版Prompt): python main.py --prompt-version 2 sample_meeting_notice.txt
+  5) 多类别费用样例:     python main.py sample_meeting_notice_multi.txt
+  6) 无密钥自测: python main.py --mock     （跳过 API，只验证解析+校验逻辑）
 """
 
 import os
@@ -24,7 +26,7 @@ import json
 import argparse
 from datetime import datetime
 from pathlib import Path
-from typing import Optional
+from typing import Optional, List
 
 # ---- 可选依赖：python-dotenv（用于读取 .env）----
 try:
@@ -47,7 +49,7 @@ except ImportError:
 class RegistrationFee(BaseModel):
     currency: str
     amount: float
-    category: Optional[str] = None
+    category: Optional[str] = None  # 如 Early Bird / Regular / Student / On-site
 
 
 class MeetingInfo(BaseModel):
@@ -56,7 +58,8 @@ class MeetingInfo(BaseModel):
     location: Optional[str] = None
     theme: Optional[str] = None
     submission_deadline: Optional[str] = None
-    registration_fee: Optional[RegistrationFee] = None
+    # 注册费用：升级为「多类别 / 多收费阶段」数组，覆盖早鸟/常规/学生等不同档位
+    registration_fees: List[RegistrationFee] = []
 
     @field_validator("date", "submission_deadline")
     @classmethod
@@ -65,37 +68,71 @@ class MeetingInfo(BaseModel):
             return v
         if not re.match(r"^\d{4}-\d{2}-\d{2}$", v or ""):
             raise ValueError(f"日期必须为 YYYY-MM-DD，收到: {v!r}")
-        # 进一步校验是否为真实存在的日期（如 2027-13-45 会在此失败）
-        datetime.strptime(v, "%Y-%m-%d")
+        datetime.strptime(v, "%Y-%m-%d")  # 进一步校验是否为真实存在的日期
         return v
 
 
-# ============ 2. 调用大模型 ============
-def call_llm(notice_text: str) -> str:
+# ============ 2. 两个版本的 Prompt ============
+# 版本1：基础版（仅字段说明 + 基础规则）
+PROMPT_V1 = (
+    "你是一个会议信息提取助手。请从用户提供的会议通知文本中提取以下字段，"
+    "并以单个 JSON 对象返回，禁止输出 JSON 之外的任何解释、注释或代码块标记：\n"
+    "conference_name(会议名称, 字符串)\n"
+    "date(会议举办日期, 字符串 YYYY-MM-DD)\n"
+    "location(举办地点, 字符串)\n"
+    "theme(会议主题, 字符串)\n"
+    "submission_deadline(投稿/注册截止日期, 字符串 YYYY-MM-DD)\n"
+    "registration_fees(注册费用数组, 每项形如 {currency 币种, amount 金额数字, category 适用类别})\n"
+    "硬性规则：\n"
+    "1) 文本中未明确给出的信息一律填 null，绝对禁止猜测或补全；\n"
+    "2) 日期必须格式化为 YYYY-MM-DD；\n"
+    "3) registration_fees 必须是数组，每项含 currency/amount/category；无费用信息时为空数组 []；\n"
+    "4) 只输出 JSON，不要 Markdown 代码块、不要前后说明。"
+)
+
+# 版本2：改进版（增加业务规则约束 + 多类别费用显式说明 + 少样本示例）
+PROMPT_V2 = (
+    "你是一个高精度的会议信息提取引擎。请从会议通知中提取结构化信息，"
+    "并严格以单个 JSON 对象返回，禁止输出任何 JSON 之外的文字。\n\n"
+    "【待提取字段】\n"
+    "conference_name: 会议全称（字符串）\n"
+    "date: 会议举办日期（字符串，强制 YYYY-MM-DD）\n"
+    "location: 举办城市与国家（字符串）\n"
+    "theme: 会议主题/领域（字符串）\n"
+    "submission_deadline: 论文投稿或早鸟注册截止日期（字符串，强制 YYYY-MM-DD）\n"
+    "registration_fees: 注册费用数组。当通知列出多个档位（如 Early Bird / Regular / "
+    "Student / On-site）时必须分别列出，每项: {currency, amount(数字), category(档位名)}；"
+    "若仅一个价格则填单元素数组；若全文无费用信息则为空数组 []。\n\n"
+    "【硬性约束】\n"
+    "1. 缺失字段一律填 null；任何未在原文显式出现的信息禁止编造。\n"
+    "2. 日期必须规整为 YYYY-MM-DD；原文为 'April 15, 2027' 须写作 '2027-04-15'。\n"
+    "3. registration_fees 必须始终是数组；金额必须是数字而非字符串。\n"
+    "4. 只返回 JSON，不要代码块标记、不要解释。\n\n"
+    "【示例】\n"
+    "输入: 'ICML 2027, July 10-15 2027, Vienna Austria. Deadline Mar 1 2027. "
+    "Fee: Early Bird €600, Regular €800.'\n"
+    "输出: {\"conference_name\":\"ICML 2027\",\"date\":\"2027-07-10\","
+    "\"location\":\"Vienna, Austria\",\"theme\":null,"
+    "\"submission_deadline\":\"2027-03-01\","
+    "\"registration_fees\":[{\"currency\":\"EUR\",\"amount\":600.0,"
+    "\"category\":\"Early Bird\"},{\"currency\":\"EUR\",\"amount\":800.0,"
+    "\"category\":\"Regular\"}]}"
+)
+
+PROMPTS = {1: PROMPT_V1, 2: PROMPT_V2}
+
+
+# ============ 3. 调用大模型 ============
+def call_llm(notice_text: str, prompt_version: int = 1) -> str:
     """调用兼容 OpenAI 接口的大模型（DeepSeek / Qwen 均可），返回原始文本。"""
     from openai import OpenAI  # 仅在真正调用时才导入，方便无密钥时也能跑 --mock
 
     client = OpenAI(
         api_key=os.environ["API_KEY"],
-        base_url=os.environ.get("API_BASE"),  # 例如 https://api.deepseek.com/v1
+        base_url=os.environ.get("API_BASE"),
     )
     model = os.environ.get("MODEL", "deepseek-chat")
-
-    system_prompt = (
-        "你是一个会议信息提取助手。请从用户提供的会议通知文本中提取以下字段，"
-        "并以单个 JSON 对象返回，禁止输出 JSON 之外的任何解释、注释或代码块标记：\n"
-        "conference_name(会议名称, 字符串)\n"
-        "date(会议举办日期, 字符串 YYYY-MM-DD)\n"
-        "location(举办地点, 字符串)\n"
-        "theme(会议主题, 字符串)\n"
-        "submission_deadline(投稿/注册截止日期, 字符串 YYYY-MM-DD)\n"
-        "registration_fee(注册费用对象: {currency 币种, amount 金额数字, category 适用类别})\n"
-        "硬性规则：\n"
-        "1) 文本中未明确给出的信息一律填 null，绝对禁止猜测或补全；\n"
-        "2) 日期必须格式化为 YYYY-MM-DD；\n"
-        "3) registration_fee 必须是对象或 null，不得写成字符串；\n"
-        "4) 只输出 JSON，不要 Markdown 代码块、不要前后说明。"
-    )
+    system_prompt = PROMPTS[prompt_version]
 
     resp = client.chat.completions.create(
         model=model,
@@ -109,7 +146,7 @@ def call_llm(notice_text: str) -> str:
     return resp.choices[0].message.content
 
 
-# ============ 3. 解析与校验 ============
+# ============ 4. 解析与校验 ============
 def parse_and_validate(raw: str) -> dict:
     """把模型返回的字符串解析为 JSON，并用 Pydantic 校验字段/日期/类型。"""
     raw = raw.strip()
@@ -126,18 +163,21 @@ def parse_and_validate(raw: str) -> dict:
     return info.model_dump()
 
 
-# ============ 4. 自测样例（无需 API Key）============
+# ============ 5. 自测样例（无需 API Key）============
 MOCK_OUTPUT = {
     "conference_name": "ICCBDA 2027",
     "date": "2027-04-15",
     "location": "Beijing, China",
     "theme": "Big Data and Analytics",
     "submission_deadline": "2026-12-01",
-    "registration_fee": {"currency": "USD", "amount": 500.0, "category": "Regular"},
+    "registration_fees": [
+        {"currency": "USD", "amount": 450.0, "category": "Early Bird"},
+        {"currency": "USD", "amount": 500.0, "category": "Regular"},
+    ],
 }
 
 
-# ============ 5. 入口 ============
+# ============ 6. 入口 ============
 def main() -> None:
     if not HAVE_PYDANTIC:
         sys.exit("缺少 pydantic，无法运行。请执行: pip install -r requirements.txt")
@@ -146,6 +186,8 @@ def main() -> None:
     ap.add_argument("input", nargs="?", help="会议通知文本文件路径")
     ap.add_argument("--mock", action="store_true",
                     help="不调用 API，用内置样例验证解析+校验流程")
+    ap.add_argument("--prompt-version", type=int, choices=[1, 2], default=1,
+                    help="选择 Prompt 版本（1=基础版, 2=改进版），默认 1")
     args = ap.parse_args()
 
     if HAVE_DOTENV:
@@ -154,12 +196,12 @@ def main() -> None:
 
     if args.mock:
         raw = json.dumps(MOCK_OUTPUT, ensure_ascii=False)
-        print("[mock] 使用内置样例，跳过 API 调用")
+        print(f"[mock] 使用内置样例（Prompt 版本 {args.prompt_version} 仅影响真实调用）")
     else:
         if not args.input:
             ap.error("请提供会议通知文本文件，或使用 --mock 自测")
         notice = Path(args.input).read_text(encoding="utf-8")
-        raw = call_llm(notice)
+        raw = call_llm(notice, prompt_version=args.prompt_version)
 
     try:
         result = parse_and_validate(raw)
