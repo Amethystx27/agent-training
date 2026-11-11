@@ -149,7 +149,8 @@ def main() -> None:
     args = ap.parse_args()
 
     if HAVE_DOTENV:
-        load_dotenv()
+        # 始终从本脚本所在目录读取 .env，避免在仓库根目录运行时找不到密钥
+        load_dotenv(Path(__file__).resolve().parent / ".env")
 
     if args.mock:
         raw = json.dumps(MOCK_OUTPUT, ensure_ascii=False)
