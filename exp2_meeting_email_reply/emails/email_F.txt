@@ -1,0 +1,13 @@
+Subject: Unable to Upload My Manuscript
+From: liu.yang@example.net
+
+Dear Technical Support Team,
+
+I am trying to upload my paper to the submission system, but the page keeps showing an error after I click the Submit button.
+
+I have tried using two different browsers, but the problem remains.
+
+Could you please advise me on how to proceed?
+
+Best regards,
+Yang Liu

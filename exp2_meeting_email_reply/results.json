@@ -1,0 +1,191 @@
+[
+  {
+    "id": "email_A",
+    "analysis": {
+      "sender": "john.smith@example.net",
+      "subject": "Inquiry About Registration Fee and Submission Deadline",
+      "conference_name": "ICCBDA 2027",
+      "primary_intent": "registration_inquiry",
+      "secondary_intents": [
+        "submission_deadline"
+      ],
+      "user_role": null,
+      "questions": [
+        "Could you please confirm whether the registration fee for student authors is USD 350?",
+        "What is the full paper submission deadline?"
+      ],
+      "extracted_entities": {
+        "conference_name": "ICCBDA 2027",
+        "sender_name": "John Smith",
+        "sender_email": "john.smith@example.net",
+        "registration_fee_mentioned": "USD 350",
+        "fee_category": "student authors",
+        "paper_type": "full paper",
+        "submission_deadline": null
+      },
+      "requires_human_review": false,
+      "review_reason": null
+    },
+    "reply": {
+      "subject": "Re: Inquiry About Registration Fee and Submission Deadline",
+      "body": "Dear John Smith,\n\nThank you for your interest in ICCBDA 2027. We are pleased to confirm that the registration fee for student authors is USD 350.\n\nThe full paper submission deadline is February 15, 2027.\n\nFor your reference, ICCBDA 2027 is scheduled to take place on May 21-23, 2027, at Xihua University, Chengdu, China.\n\nIf you have any further questions, please contact the conference secretariat at iccbda2027@example.org.\n\nBest regards,\nConference Secretariat\nICCBDA 2027",
+      "requires_human_review": false,
+      "review_reason": null
+    }
+  },
+  {
+    "id": "email_B",
+    "analysis": {
+      "sender": "maria.chen@example.net",
+      "subject": "Request for Paper Acceptance Status",
+      "conference_name": "ICCBDA 2027",
+      "primary_intent": "acceptance_inquiry",
+      "secondary_intents": [],
+      "user_role": "author",
+      "questions": [
+        "Could you let me know whether my paper has been accepted?"
+      ],
+      "extracted_entities": {
+        "author_name": "Maria Chen",
+        "paper_title": "Privacy-Preserving Edge Intelligence for IoT Networks",
+        "conference_name": "ICCBDA 2027",
+        "submission_timeframe": "two weeks ago"
+      },
+      "requires_human_review": true,
+      "review_reason": "The email requests a paper acceptance decision; acceptance results must be reviewed by a human and cannot be confirmed automatically."
+    },
+    "reply": {
+      "subject": "Re: Request for Paper Acceptance Status – ICCBDA 2027",
+      "body": "Dear Maria Chen,\n\nThank you for your email regarding your paper \"Privacy-Preserving Edge Intelligence for IoT Networks\" submitted to ICCBDA 2027.\n\nWe are unable to confirm individual paper acceptance results by email. Acceptance results can only be checked through the submission system. If you need further assistance, please contact the conference secretariat at iccbda2027@example.org.\n\n[HUMAN REVIEW REQUIRED]\n\nBest regards,\nICCBDA 2027 Organizing Committee",
+      "requires_human_review": true,
+      "review_reason": "The email requests a paper acceptance decision; acceptance results must be reviewed by a human and cannot be confirmed automatically."
+    }
+  },
+  {
+    "id": "email_C",
+    "analysis": {
+      "sender": "david.lee@example.net",
+      "subject": "Payment Confirmation and Invoice Request",
+      "conference_name": null,
+      "primary_intent": "payment_inquiry",
+      "secondary_intents": [],
+      "user_role": "attendee",
+      "questions": [
+        "Could you please check whether my payment has been received?"
+      ],
+      "extracted_entities": {
+        "email": "david.lee@example.net",
+        "registration_email": "david.lee@example.net",
+        "payment_status_user_stated": "completed",
+        "payment_date_user_stated": "yesterday",
+        "invoice_requested": true,
+        "reimbursement_purpose": "university reimbursement"
+      },
+      "requires_human_review": false,
+      "review_reason": null
+    },
+    "reply": {
+      "subject": "Re: Payment Confirmation and Invoice Request [HUMAN REVIEW REQUIRED]",
+      "body": "Dear Mr. Lee,\n\nThank you for your email regarding your registration payment and invoice request for ICCBDA 2027.\n\nWe are unable to verify payment receipt or confirm invoice issuance by email. Please contact the Conference Secretariat at iccbda2027@example.org for assistance with payment verification and invoice arrangements. Your request requires manual review by the Secretariat.\n\nThank you for your patience.\n\nBest regards,\nICCBDA 2027 Secretariat",
+      "requires_human_review": true,
+      "review_reason": "Payment confirmation and invoice request cannot be resolved using the conference fact card; manual verification by the Secretariat is required."
+    }
+  },
+  {
+    "id": "email_D",
+    "analysis": {
+      "sender": "anna.wilson@example.net",
+      "subject": "Accommodation and Transportation Information",
+      "conference_name": "ICCBDA 2027",
+      "primary_intent": "accommodation_inquiry",
+      "secondary_intents": [
+        "other"
+      ],
+      "user_role": "prospective_attendee",
+      "questions": [
+        "Could you recommend hotels near the conference venue?",
+        "Could you provide information about transportation from Chengdu Tianfu International Airport to the university?"
+      ],
+      "extracted_entities": {
+        "conference_name": "ICCBDA 2027",
+        "conference_year": "2027",
+        "city": "Chengdu",
+        "venue": null,
+        "airport": "Chengdu Tianfu International Airport",
+        "university": null
+      },
+      "requires_human_review": false,
+      "review_reason": null
+    },
+    "reply": {
+      "subject": "Re: Accommodation and Transportation Information – ICCBDA 2027",
+      "body": "Dear Anna Wilson,\n\nThank you for your interest in ICCBDA 2027, which will be held on May 21–23, 2027 at Xihua University, Chengdu, China.\n\nRegarding hotels near the conference venue, accommodation information has not yet been announced. Please follow the official conference notices for future updates. We are unable to recommend specific hotels at this time.\n\nRegarding transportation from Chengdu Tianfu International Airport to Xihua University, we do not have confirmed transportation information available in the conference facts. Please contact the secretariat at iccbda2027@example.org for further assistance.\n\nBest regards,\nICCBDA 2027 Organizing Committee",
+      "requires_human_review": false,
+      "review_reason": null
+    }
+  },
+  {
+    "id": "email_E",
+    "analysis": {
+      "sender": "peter.brown@example.net",
+      "subject": "Request for Registration Fee Refund",
+      "conference_name": "ICCBDA 2027",
+      "primary_intent": "payment_inquiry",
+      "secondary_intents": [],
+      "user_role": "attendee",
+      "questions": [
+        "Can I receive a full refund?",
+        "How long will the refund process take?"
+      ],
+      "extracted_entities": {
+        "sender_email": "peter.brown@example.net",
+        "conference_name": "ICCBDA 2027",
+        "refund_requested": true,
+        "refund_type_requested": "full refund",
+        "claimed_payment_status": "registration fee already paid",
+        "cancellation_reason": "unexpected change in schedule",
+        "payment_amount": null,
+        "registration_id": null
+      },
+      "requires_human_review": true,
+      "review_reason": "The email requests a registration fee refund and references an already-paid fee; refund/payment matters require manual review."
+    },
+    "reply": {
+      "subject": "Re: Request for Registration Fee Refund – ICCBDA 2027",
+      "body": "Dear Mr. Brown,\n\nThank you for your email regarding your request for a registration fee refund for ICCBDA 2027.\n\nWe acknowledge receipt of your message. Please note that we are currently unable to confirm a refund or provide a timeline, as no formal refund policy is available in the conference information we can reference. Your request has therefore been forwarded to the conference secretariat for manual review and confirmation.\n\nFor further assistance, you may contact the secretariat at iccbda2027@example.org.\n\n[HUMAN REVIEW REQUIRED]\n\nSincerely,\nICCBDA 2027 Secretariat",
+      "requires_human_review": true,
+      "review_reason": "The email requests a registration fee refund and references an already-paid fee; refund/payment matters require manual review."
+    }
+  },
+  {
+    "id": "email_F",
+    "analysis": {
+      "sender": "liu.yang@example.net",
+      "subject": "Unable to Upload My Manuscript",
+      "conference_name": null,
+      "primary_intent": "technical_issue",
+      "secondary_intents": [],
+      "user_role": "author",
+      "questions": [
+        "Could you please advise me on how to proceed?"
+      ],
+      "extracted_entities": {
+        "sender_name": "Yang Liu",
+        "email": "liu.yang@example.net",
+        "issue": "Unable to upload manuscript",
+        "system": "submission system",
+        "error_trigger": "after clicking Submit button",
+        "browsers_tried": "two different browsers",
+        "problem_persists": true
+      },
+      "requires_human_review": false,
+      "review_reason": null
+    },
+    "reply": {
+      "subject": "Re: Unable to Upload My Manuscript",
+      "body": "Dear Yang Liu,\n\nThank you for your email. We understand that you are experiencing an error when uploading your manuscript to the submission system.\n\nWe are unable to confirm technical details or provide specific troubleshooting guidance at this time. For further assistance, please contact the conference secretariat at iccbda2027@example.org.\n\nWe apologize for the inconvenience.\n\nBest regards,\nICCBDA 2027 Secretariat",
+      "requires_human_review": false,
+      "review_reason": null
+    }
+  }
+]

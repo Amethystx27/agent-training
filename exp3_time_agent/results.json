@@ -1,0 +1,130 @@
+[
+  {
+    "id": "Q1",
+    "question": "现在新加坡几点？",
+    "answer": "新加坡现在是 2026-11-11 18:57:04 +08（Asia/Singapore）。",
+    "tool_logs": [
+      {
+        "tool": "get_current_time",
+        "args": {
+          "timezone": "Asia/Singapore"
+        },
+        "result": {
+          "timezone": "Asia/Singapore",
+          "datetime": "2026-11-11T18:57:04.101952+08:00",
+          "formatted_time": "2026-11-11 18:57:04 +08"
+        }
+      }
+    ]
+  },
+  {
+    "id": "Q2",
+    "question": "现在纽约几点？",
+    "answer": "纽约现在是 2026-11-11 05:57:04 EST（America/New_York）。",
+    "tool_logs": [
+      {
+        "tool": "get_current_time",
+        "args": {
+          "timezone": "America/New_York"
+        },
+        "result": {
+          "timezone": "America/New_York",
+          "datetime": "2026-11-11T05:57:04.103407-05:00",
+          "formatted_time": "2026-11-11 05:57:04 EST"
+        }
+      }
+    ]
+  },
+  {
+    "id": "Q3",
+    "question": "2027年2月15日距离今天还有多少天？",
+    "answer": "2027-02-15 距离今天（2026-11-11）还有 96 天。",
+    "tool_logs": [
+      {
+        "tool": "days_until",
+        "args": {
+          "target_date": "2027-02-15"
+        },
+        "result": {
+          "target_date": "2027-02-15",
+          "today": "2026-11-11",
+          "days_remaining": 96
+        }
+      }
+    ]
+  },
+  {
+    "id": "Q4",
+    "question": "ICCBDA 2027 的截稿日期还有多久？",
+    "answer": "ICCBDA 2027 的投稿截止日期是 2027-02-15，距离今天还有 96 天。",
+    "tool_logs": [
+      {
+        "tool": "get_conference_deadline",
+        "args": {
+          "conference_name": "ICCBDA 2027"
+        },
+        "result": {
+          "conference_name": "ICCBDA 2027",
+          "submission_deadline": "2027-02-15",
+          "conference_start": "2027-05-21",
+          "conference_end": "2027-05-23"
+        }
+      },
+      {
+        "tool": "days_until",
+        "args": {
+          "target_date": "2027-02-15"
+        },
+        "result": {
+          "target_date": "2027-02-15",
+          "today": "2026-11-11",
+          "days_remaining": 96
+        }
+      }
+    ]
+  },
+  {
+    "id": "Q5",
+    "question": "东京明天上午9点对应北京时间几点？",
+    "answer": "东京明天（2026-11-12 09:00）上午 9:00 对应北京时间为 2026-11-12 08:00:00 CST。",
+    "tool_logs": [
+      {
+        "tool": "convert_timezone",
+        "args": {
+          "datetime_str": "2026-11-12 09:00",
+          "source_timezone": "Asia/Tokyo",
+          "target_timezone": "Asia/Shanghai"
+        },
+        "result": {
+          "source": {
+            "timezone": "Asia/Tokyo",
+            "datetime": "2026-11-12T09:00:00+09:00"
+          },
+          "target": {
+            "timezone": "Asia/Shanghai",
+            "datetime": "2026-11-12T08:00:00+08:00",
+            "formatted_time": "2026-11-12 08:00:00 CST"
+          },
+          "offset_hours": -1.0
+        }
+      }
+    ]
+  },
+  {
+    "id": "Q6",
+    "question": "查询不存在的会议 XYZ 2027 的截稿日期。",
+    "answer": "未找到名为「XYZ 2027」的会议，无法提供截稿日期。",
+    "tool_logs": [
+      {
+        "tool": "get_conference_deadline",
+        "args": {
+          "conference_name": "XYZ 2027"
+        },
+        "result": {
+          "error": "Conference not found",
+          "conference_name": "XYZ 2027"
+        }
+      }
+    ]
+  }
+]
