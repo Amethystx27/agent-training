@@ -1,0 +1,195 @@
+{
+  "Q1": {
+    "question": "ICCBDA 2027 的投稿截止日期是什么时候？距离今天还有多少天？",
+    "answer": "**ICCBDA 2027**（The 11th International Conference on Cloud Computing and Big Data Analytics）\n\n- **投稿截止日期：2027-02-15**\n- 距离今天（2026-11-12）还有 **95 天**\n\n补充信息：\n- 会议时间：2027-05-21 至 2027-05-23\n- 会议地点：中国成都 · 西华大学（Xihua University）\n- 会议主题：云计算、大数据分析、人工智能\n\n如需了解投稿准备时间规划或会议举办地的时区信息，我可以继续帮你查询。",
+    "tool_logs": [
+      {
+        "round": 1,
+        "tool_name": "search_conference",
+        "arguments": {
+          "conference_name": "ICCBDA 2027"
+        },
+        "result": {
+          "conference_name": "ICCBDA 2027",
+          "full_name": "The 11th International Conference on Cloud Computing and Big Data Analytics",
+          "submission_deadline": "2027-02-15",
+          "conference_start": "2027-05-21",
+          "conference_end": "2027-05-23",
+          "location": "Xihua University, Chengdu, China",
+          "topics": [
+            "Cloud Computing",
+            "Big Data Analytics",
+            "Artificial Intelligence"
+          ]
+        },
+        "status": "ok"
+      },
+      {
+        "round": 2,
+        "tool_name": "days_until",
+        "arguments": {
+          "target_date": "2027-02-15"
+        },
+        "result": {
+          "target_date": "2027-02-15",
+          "today": "2026-11-12",
+          "days_remaining": 95
+        },
+        "status": "ok"
+      }
+    ]
+  },
+  "Q2": {
+    "question": "AIIoT 2027 在哪里举办？距离会议开始还有多少天？",
+    "answer": "**AIIoT 2027** 会议信息如下：\n\n- **全称**：The International Conference on Artificial Intelligence and Internet of Things\n- **举办地点**：中国成都（Chengdu, China）\n- **会议时间**：2027 年 6 月 18 日至 20 日\n- **投稿截止**：2027 年 3 月 15 日\n- **主题**：人工智能、物联网、边缘计算\n\n**距离会议开始（2027-06-18）还有 218 天**（以 2026-11-12 为当前日期计算）。",
+    "tool_logs": [
+      {
+        "round": 1,
+        "tool_name": "search_conference",
+        "arguments": {
+          "conference_name": "AIIoT 2027"
+        },
+        "result": {
+          "conference_name": "AIIoT 2027",
+          "full_name": "The International Conference on Artificial Intelligence and Internet of Things",
+          "submission_deadline": "2027-03-15",
+          "conference_start": "2027-06-18",
+          "conference_end": "2027-06-20",
+          "location": "Chengdu, China",
+          "topics": [
+            "Artificial Intelligence",
+            "Internet of Things",
+            "Edge Computing"
+          ]
+        },
+        "status": "ok"
+      },
+      {
+        "round": 2,
+        "tool_name": "days_until",
+        "arguments": {
+          "target_date": "2027-06-18"
+        },
+        "result": {
+          "target_date": "2027-06-18",
+          "today": "2026-11-12",
+          "days_remaining": 218
+        },
+        "status": "ok"
+      }
+    ]
+  },
+  "Q3": {
+    "question": "现在新加坡和纽约分别是几点？",
+    "answer": "以下是当前时间：\n\n- **新加坡（Asia/Singapore）**：2026-11-12 22:06:39（UTC+8）\n- **纽约（America/New_York）**：2026-11-12 09:06:39（UTC-5）\n\n两地时差为 **13 小时**，新加坡比纽约快 13 小时。",
+    "tool_logs": [
+      {
+        "round": 1,
+        "tool_name": "get_current_time",
+        "arguments": {
+          "timezone": "Asia/Singapore"
+        },
+        "result": {
+          "timezone": "Asia/Singapore",
+          "datetime": "2026-11-12T22:06:39.248273+08:00",
+          "formatted_time": "2026-11-12 22:06:39"
+        },
+        "status": "ok"
+      },
+      {
+        "round": 1,
+        "tool_name": "get_current_time",
+        "arguments": {
+          "timezone": "America/New_York"
+        },
+        "result": {
+          "timezone": "America/New_York",
+          "datetime": "2026-11-12T09:06:39.250847-05:00",
+          "formatted_time": "2026-11-12 09:06:39"
+        },
+        "status": "ok"
+      }
+    ]
+  },
+  "Q4": {
+    "question": "东京明天上午9点对应北京时间几点？",
+    "answer": "东京明天（2026年11月13日）上午9:00，对应北京时间是**同一天上午8:00**。\n\n因为北京位于东八区（UTC+8），东京位于东九区（UTC+9），所以北京时间比东京时间晚1小时。",
+    "tool_logs": [
+      {
+        "round": 1,
+        "tool_name": "convert_timezone",
+        "arguments": {
+          "date_str": "2026-11-13",
+          "time_str": "09:00",
+          "from_timezone": "Asia/Tokyo",
+          "to_timezone": "Asia/Shanghai"
+        },
+        "result": {
+          "from_timezone": "Asia/Tokyo",
+          "to_timezone": "Asia/Shanghai",
+          "source_datetime": "2026-11-13T09:00:00+09:00",
+          "target_datetime": "2026-11-13T08:00:00+08:00",
+          "formatted_target": "2026-11-13 08:00:00"
+        },
+        "status": "ok"
+      }
+    ]
+  },
+  "Q5": {
+    "question": "What is the submission deadline of ICCBDA 2027? How many days are left?",
+    "answer": "**ICCBDA 2027** — The 11th International Conference on Cloud Computing and Big Data Analytics\n\n- **Submission deadline:** 2027-02-15\n- **Days remaining:** 95 days (as of today, 2026-11-12)\n\nA few related details for your planning:\n- **Conference dates:** 2027-05-21 to 2027-05-23\n- **Location:** Xihua University, Chengdu, China\n- **Topics:** Cloud Computing, Big Data Analytics, Artificial Intelligence\n\nWould you like me to check the number of days until the conference start date, or convert any key times into your local timezone?",
+    "tool_logs": [
+      {
+        "round": 1,
+        "tool_name": "search_conference",
+        "arguments": {
+          "conference_name": "ICCBDA 2027"
+        },
+        "result": {
+          "conference_name": "ICCBDA 2027",
+          "full_name": "The 11th International Conference on Cloud Computing and Big Data Analytics",
+          "submission_deadline": "2027-02-15",
+          "conference_start": "2027-05-21",
+          "conference_end": "2027-05-23",
+          "location": "Xihua University, Chengdu, China",
+          "topics": [
+            "Cloud Computing",
+            "Big Data Analytics",
+            "Artificial Intelligence"
+          ]
+        },
+        "status": "ok"
+      },
+      {
+        "round": 2,
+        "tool_name": "days_until",
+        "arguments": {
+          "target_date": "2027-02-15"
+        },
+        "result": {
+          "target_date": "2027-02-15",
+          "today": "2026-11-12",
+          "days_remaining": 95
+        },
+        "status": "ok"
+      }
+    ]
+  },
+  "Q6": {
+    "question": "帮我查询一个不存在的会议 XYZ 2027 的投稿截止日期。",
+    "answer": "查询结果：会议数据库中**未找到名为 “XYZ 2027” 的会议记录**（返回错误：Conference not found）。\n\n因此我无法提供该会议的投稿截止日期、举办时间或地点等信息。可能的原因包括：\n- 会议名称拼写有误，或该会议并未收录在我们的数据库中；\n- 该会议确实不存在。\n\n如果您能提供更完整的会议全称、缩写或相关领域信息，我可以再帮您查询一次。",
+    "tool_logs": [
+      {
+        "round": 1,
+        "tool_name": "search_conference",
+        "arguments": {
+          "conference_name": "XYZ 2027"
+        },
+        "result": {
+          "error": "Conference not found"
+        },
+        "status": "error"
+      }
+    ]
+  }
+}
