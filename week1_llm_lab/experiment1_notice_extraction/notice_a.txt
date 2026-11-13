@@ -1,0 +1,19 @@
+The 11th International Conference on Cloud Computing and Big Data Analytics (ICCBDA 2027)
+Date: May 21–23, 2027
+Venue: Xihua University, Chengdu, China
+
+ICCBDA 2027 invites researchers, engineers, and practitioners to submit original papers on cloud computing, big data analytics, artificial intelligence, edge computing, distributed systems, and related areas.
+
+Important Dates:
+- Paper Submission Deadline: February 15, 2027
+- Notification of Acceptance: March 25, 2027
+- Camera-ready Paper: April 15, 2027
+- Conference Dates: May 21–23, 2027
+
+Registration Fees:
+- Student Author: USD 350
+- Regular Author: USD 450
+- Listener: USD 180
+
+The conference is organized by the School of Computer and Software Engineering, Xihua University.
+For inquiries, please contact iccbda2027@example.org.
