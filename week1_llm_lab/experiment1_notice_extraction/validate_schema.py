@@ -1,84 +1,259 @@
-import os
+from __future__ import annotations
+
+import argparse
 import json
+import os
+import re
+from pathlib import Path
+from typing import Sequence
+
 from dotenv import load_dotenv
 from openai import OpenAI
-from typing import List, Optional
-from pydantic import BaseModel, ValidationError
+from pydantic import ValidationError
 
-# 1. 定义质检标准
-class OtherDate(BaseModel):
-    type: str
-    date: str
+from prompts import PROMPTS
+from schemas import ConferenceInfo
 
-class RegistrationFee(BaseModel):
-    category: str
-    amount: float 
-    currency: str
 
-class ConferenceInfo(BaseModel):
-    conference_name: Optional[str] = None
-    conference_full_name: Optional[str] = None
-    start_date: Optional[str] = None
-    end_date: Optional[str] = None
-    location: Optional[str] = None
-    topics: Optional[List[str]] = None
-    submission_deadline: Optional[str] = None
-    other_dates: Optional[List[OtherDate]] = None
-    registration_fee: Optional[List[RegistrationFee]] = None
-    organizer: Optional[str] = None
-
-load_dotenv("../.env")
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"), base_url=os.getenv("OPENAI_BASE_URL"))
-
-# 2. 读取本地 notice_b.txt 文件
-print("=== 正在读取 notice_b.txt ===")
-with open("notice_b.txt", "r", encoding="utf-8") as f:
-    notice_text = f.read()
-
-prompt = """
-你是一名学术会议信息抽取助手。
-请仅依据用户提供的会议通知提取信息，不得使用外部知识补全或猜测。
-输出字段：
-conference_name, conference_full_name, start_date, end_date,
-location, topics, submission_deadline, other_dates,
-registration_fee, organizer。
-规则：
-1. 所有字段必须出现；缺失值使用 null。
-2. 日期统一为 YYYY-MM-DD。
-3. submission_deadline 仅填写明确的全文投稿截止日期。
-4. 其他日期按类型放入 other_dates。
-5. 费用必须保留币种和适用人群。
-6. 不确定、缺失或有歧义的信息不得自行推断。
-7. 只输出合法 JSON，不要输出 Markdown 代码围栏或解释。
-8. 请严格按照以下 JSON 结构输出，不要改变字段名：
-{
-  "topics": ["主题1", "主题2"],
-  "other_dates": [{"type": "日期类型", "date": "YYYY-MM-DD"}],
-  "registration_fee": [{"category": "适用人群", "amount": 0, "currency": "币种"}]
+BASE_DIR = Path(__file__).resolve().parent
+OUTPUTS_DIR = BASE_DIR / "outputs"
+RAW_OUTPUTS_DIR = OUTPUTS_DIR / "raw"
+NOTICE_FILES = {
+    "a": BASE_DIR / "notice_a.txt",
+    "b": BASE_DIR / "notice_b.txt",
+    "c": BASE_DIR / "notice_c.txt",
 }
-9. 即使原文没有出现 "Topics:" 字段，也要从投稿邀请的段落中提取具体的研究主题词，填入 topics 数组。
-"""
-
-# 3. 调用模型
-response = client.chat.completions.create(
-    model=os.getenv("MODEL_NAME"),
-    messages=[{"role": "system", "content": prompt}, {"role": "user", "content": notice_text}],
-    temperature=0.1
+ENV_FILES = (
+    BASE_DIR / ".env",
+    BASE_DIR.parent / ".env",
 )
-raw_output = response.choices[0].message.content
+TEMPERATURE = 0.1
+REQUEST_TIMEOUT_SECONDS = 60
 
-# 4. 清洗与质检
-print("\n=== 模型原始输出 ===")
-print(raw_output)
-clean_json_str = raw_output.strip().replace("```json", "").replace("```", "")
 
-print("\n=== 质检开始 ===")
-try:
-    parsed_data = json.loads(clean_json_str)
-    conf = ConferenceInfo(**parsed_data)
-    print("✅ 质检通过！格式完全符合。")
-    print("提取到的会议名称：", conf.conference_name)
-except ValidationError as e:
-    print("❌ 格式质检失败！模型给的格式违规：\n", e)
-except json.JSONDecodeError:
-    print("❌ 解析失败！模型连合法的 JSON 都没给出。")
+def load_environment() -> None:
+    """Load the experiment-local .env first, then the legacy parent-level one."""
+
+    for env_file in ENV_FILES:
+        if env_file.is_file():
+            load_dotenv(env_file)
+
+
+def load_notice(notice_key: str) -> str:
+    """Read one of the fixed A/B/C notices from this experiment directory."""
+
+    path = NOTICE_FILES[notice_key]
+    if not path.is_file():
+        raise FileNotFoundError(f"找不到通知文件: {path.name}")
+    text = path.read_text(encoding="utf-8").strip()
+    if not text:
+        raise ValueError(f"通知文件为空: {path.name}")
+    return text
+
+
+def create_client() -> OpenAI:
+    load_environment()
+    api_key = os.getenv("OPENAI_API_KEY")
+    if not api_key:
+        raise RuntimeError("缺少环境变量 OPENAI_API_KEY")
+    return OpenAI(
+        api_key=api_key,
+        base_url=os.getenv("OPENAI_BASE_URL") or None,
+    )
+
+
+def parse_json_output(raw_output: str) -> dict:
+    """Parse plain JSON and tolerate a single Markdown JSON fence."""
+
+    if not isinstance(raw_output, str) or not raw_output.strip():
+        raise ValueError("模型没有返回内容")
+
+    text = raw_output.strip()
+    fenced = re.fullmatch(
+        r"```(?:json)?\s*(.*?)\s*```",
+        text,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    if fenced:
+        text = fenced.group(1).strip()
+
+    try:
+        parsed = json.loads(text)
+    except json.JSONDecodeError:
+        start = text.find("{")
+        end = text.rfind("}")
+        if start == -1 or end <= start:
+            raise
+        parsed = json.loads(text[start : end + 1])
+
+    if not isinstance(parsed, dict):
+        raise ValueError("模型输出的顶层必须是 JSON 对象")
+    return parsed
+
+
+def validate_output(raw_output: str) -> dict:
+    parsed = parse_json_output(raw_output)
+    conference = ConferenceInfo.model_validate(parsed)
+    return conference.model_dump(mode="json")
+
+
+def output_paths(notice_key: str, prompt_version: int) -> tuple[Path, Path]:
+    stem = f"notice_{notice_key}_prompt_v{prompt_version}"
+    return (
+        OUTPUTS_DIR / f"{stem}.json",
+        RAW_OUTPUTS_DIR / f"{stem}.txt",
+    )
+
+
+def save_raw_output(
+    notice_key: str,
+    prompt_version: int,
+    raw_output: str,
+) -> Path:
+    _, raw_path = output_paths(notice_key, prompt_version)
+    raw_path.parent.mkdir(parents=True, exist_ok=True)
+    raw_path.write_text(raw_output, encoding="utf-8")
+    return raw_path
+
+
+def save_validated_output(
+    notice_key: str,
+    prompt_version: int,
+    validated: dict,
+) -> Path:
+    json_path, _ = output_paths(notice_key, prompt_version)
+    json_path.parent.mkdir(parents=True, exist_ok=True)
+    json_path.write_text(
+        json.dumps(validated, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    return json_path
+
+
+def call_model(
+    client: OpenAI,
+    notice_text: str,
+    prompt_version: int,
+) -> str:
+    model_name = os.getenv("MODEL_NAME")
+    if not model_name:
+        raise RuntimeError("缺少环境变量 MODEL_NAME")
+
+    response = client.chat.completions.create(
+        model=model_name,
+        messages=[
+            {"role": "system", "content": PROMPTS[prompt_version]},
+            {"role": "user", "content": notice_text},
+        ],
+        temperature=TEMPERATURE,
+        timeout=REQUEST_TIMEOUT_SECONDS,
+    )
+    content = response.choices[0].message.content
+    if not content:
+        raise ValueError("模型返回的 content 为空")
+    return content
+
+
+def expand_selection(value: str, choices: Sequence[str]) -> list[str]:
+    return list(choices) if value == "all" else [value]
+
+
+def run_job(
+    client: OpenAI,
+    notice_key: str,
+    prompt_version: int,
+) -> bool:
+    print(f"\n=== notice_{notice_key}.txt | Prompt V{prompt_version} ===")
+    try:
+        notice_text = load_notice(notice_key)
+        raw_output = call_model(client, notice_text, prompt_version)
+        print("\n--- 模型原始输出 ---")
+        print(raw_output)
+        raw_path = save_raw_output(notice_key, prompt_version, raw_output)
+        print(f"\n原始响应已保存: {raw_path.relative_to(BASE_DIR)}")
+
+        validated = validate_output(raw_output)
+        json_path = save_validated_output(
+            notice_key,
+            prompt_version,
+            validated,
+        )
+        print("\n--- 校验通过 ---")
+        print(json.dumps(validated, ensure_ascii=False, indent=2))
+        print(f"\nJSON 结果已保存: {json_path.relative_to(BASE_DIR)}")
+        return True
+    except (ValidationError, json.JSONDecodeError, ValueError, RuntimeError) as exc:
+        print(f"\n--- 校验或调用失败 ---\n{exc}")
+        return False
+    except Exception as exc:
+        print(f"\n--- API 请求异常 ---\n{type(exc).__name__}: {exc}")
+        return False
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        description="实验1：统一会议通知信息提取与严格校验入口"
+    )
+    parser.add_argument(
+        "--notice",
+        choices=["a", "b", "c", "all"],
+        default="a",
+        help="选择固定通知文件；all 表示依次运行 A/B/C",
+    )
+    parser.add_argument(
+        "--prompt-version",
+        choices=["1", "2", "all"],
+        default="2",
+        help="选择 Prompt 版本；all 表示依次运行 V1/V2",
+    )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="只验证文件读取和 Prompt 选择，不调用模型 API",
+    )
+    parser.add_argument(
+        "--show-prompt",
+        action="store_true",
+        help="与 --dry-run 一起使用时输出完整 Prompt",
+    )
+    return parser
+
+
+def main(argv: Sequence[str] | None = None) -> int:
+    args = build_parser().parse_args(argv)
+    notice_keys = expand_selection(args.notice, tuple(NOTICE_FILES))
+    prompt_versions = [
+        int(value)
+        for value in expand_selection(args.prompt_version, ("1", "2"))
+    ]
+
+    if args.dry_run:
+        for notice_key in notice_keys:
+            notice_text = load_notice(notice_key)
+            for prompt_version in prompt_versions:
+                print(
+                    f"[dry-run] notice_{notice_key}.txt "
+                    f"({len(notice_text)} chars), Prompt V{prompt_version}"
+                )
+                if args.show_prompt:
+                    print(PROMPTS[prompt_version])
+        return 0
+
+    try:
+        client = create_client()
+    except RuntimeError as exc:
+        print(f"配置错误: {exc}")
+        return 2
+
+    results = [
+        run_job(client, notice_key, prompt_version)
+        for notice_key in notice_keys
+        for prompt_version in prompt_versions
+    ]
+    failed = results.count(False)
+    print(f"\n完成：成功 {len(results) - failed}，失败 {failed}")
+    return 1 if failed else 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

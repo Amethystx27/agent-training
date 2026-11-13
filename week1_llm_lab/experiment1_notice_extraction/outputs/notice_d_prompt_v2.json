@@ -1,0 +1,83 @@
+{
+  "conference_name": "AIIoT 2027",
+  "conference_full_name": "International Conference on Artificial Intelligence and Internet of Things",
+  "start_date": "2027-06-18",
+  "end_date": "2027-06-20",
+  "location": "Chengdu, China",
+  "topics": [
+    "artificial intelligence",
+    "Internet of Things",
+    "edge computing",
+    "federated learning",
+    "intelligent network systems"
+  ],
+  "submission_deadline": "2027-03-15",
+  "acceptance_notification": "2027-04-20",
+  "camera_ready_deadline": "2027-05-10",
+  "early_bird_registration_deadline": "2027-05-01",
+  "registration_fees": [
+    {
+      "category": "regular_author",
+      "amount": 400.0,
+      "currency": "USD",
+      "stage": "early_bird",
+      "discount_deadline": "2027-05-01"
+    },
+    {
+      "category": "regular_author",
+      "amount": 500.0,
+      "currency": "USD",
+      "stage": "regular",
+      "discount_deadline": null
+    },
+    {
+      "category": "student_author",
+      "amount": 280.0,
+      "currency": "USD",
+      "stage": "early_bird",
+      "discount_deadline": "2027-05-01"
+    },
+    {
+      "category": "student_author",
+      "amount": 350.0,
+      "currency": "USD",
+      "stage": "regular",
+      "discount_deadline": null
+    },
+    {
+      "category": "non_author_participant",
+      "amount": 200.0,
+      "currency": "USD",
+      "stage": "early_bird",
+      "discount_deadline": "2027-05-01"
+    },
+    {
+      "category": "non_author_participant",
+      "amount": 260.0,
+      "currency": "USD",
+      "stage": "regular",
+      "discount_deadline": null
+    }
+  ],
+  "registration_policy": {
+    "student_eligibility": "Participants who hold valid full-time student status.",
+    "student_proof": [
+      "valid student ID",
+      "official enrollment certificate"
+    ],
+    "registration_conditions": [
+      "Each accepted paper must be covered by at least one full registration.",
+      "The early bird discount applies only to registrations with successful payment received before May 1, 2027."
+    ],
+    "included_services": [
+      "access to all technical sessions",
+      "conference materials",
+      "coffee breaks",
+      "lunches"
+    ],
+    "excluded_expenses": [
+      "Accommodation",
+      "travel expenses"
+    ]
+  }
+}

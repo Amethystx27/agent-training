@@ -1,0 +1,42 @@
+Call for Papers and Registration Information
+
+The International Conference on Artificial Intelligence and Internet of Things (AIIoT 2027) will be held in Chengdu, China, from June 18 to June 20, 2027.
+
+The conference aims to bring together researchers, engineers, and industry professionals to discuss recent advances in artificial intelligence, Internet of Things, edge computing, federated learning, and intelligent network systems.
+
+1. Important Dates
+
+Paper Submission Deadline: March 15, 2027
+Acceptance Notification: April 20, 2027
+Camera-ready Submission: May 10, 2027
+Early Bird Registration Deadline: May 1, 2027
+Conference Dates: June 18–20, 2027
+
+2. Registration Fees
+
+Participants are encouraged to complete their registration before the early bird deadline to enjoy discounted registration fees.
+
+The registration fees are listed below:
+
+Registration Category | Early Bird Fee (Before May 1) | Regular Fee (On/After May 1)
+Regular Author | USD 400 | USD 500
+Student Author | USD 280 | USD 350
+Non-author Participant | USD 200 | USD 260
+
+3. Registration Policy
+
+The student registration rate is available only to participants who hold valid full-time student status.
+Student authors must provide a valid student ID or an official enrollment certificate.
+Each accepted paper must be covered by at least one full registration.
+The early bird discount applies only to registrations with successful payment received before May 1, 2027.
+Registration fees include access to all technical sessions, conference materials, coffee breaks, and lunches.
+Accommodation and travel expenses are not included in the registration fees.
+
+4. Contact Information
+
+For registration-related inquiries, please contact:
+Conference Secretariat
+Email: registration@aiiot2027.example.org
+Website: www.aiiot2027.example.org
+
+We look forward to welcoming you to AIIoT 2027!

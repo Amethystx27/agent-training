@@ -1,0 +1,1 @@
+{"conference_name":"Edge Intelligence Forum 2027","conference_full_name":null,"start_date":null,"end_date":null,"location":"Chengdu, China","topics":["edge intelligence","federated learning","Internet of Things","network security"],"submission_deadline":null,"other_dates":[],"registration_fee":null,"organizer":null}
