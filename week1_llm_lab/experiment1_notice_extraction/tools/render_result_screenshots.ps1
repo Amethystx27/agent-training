@@ -1,7 +1,11 @@
 $ErrorActionPreference = "Stop"
 
-$experimentDir = $PSScriptRoot
-$outputsDir = Join-Path $experimentDir "outputs"
+$projectDir = Split-Path -Parent $PSScriptRoot
+$outputsDir = Join-Path $projectDir "outputs"
+$screenshotsDir = Join-Path $projectDir "screenshots"
+if (-not (Test-Path -LiteralPath $screenshotsDir)) {
+    New-Item -ItemType Directory -Path $screenshotsDir | Out-Null
+}
 
 Add-Type -AssemblyName System.Drawing
 
@@ -152,7 +156,7 @@ $jsonC = Read-Utf8File (Join-Path $outputsDir "notice_c_prompt_v2.json")
 
 $summary = @"
 COMMAND EXECUTED
-PS $experimentDir> python validate_schema.py --notice all --prompt-version all
+PS $projectDir> python src\validate_schema.py --notice all --prompt-version all
 
 REAL MODEL RUN RESULT
 notice_a_prompt_v1.json  STRICT VALIDATION PASSED
@@ -218,19 +222,19 @@ Saved JSON: outputs/notice_c_prompt_v2.json
 Save-ResultImage `
     -Heading "Six real model runs | command and completion summary" `
     -Content $summary `
-    -Destination (Join-Path $experimentDir "01_real_model_run_command_and_summary.png")
+    -Destination (Join-Path $screenshotsDir "01_real_model_run_command_and_summary.png")
 
 Save-ResultImage `
     -Heading "notice_a.txt | Prompt V2 | complete fields" `
     -Content $aContent `
-    -Destination (Join-Path $experimentDir "02_notice_a_prompt_v2_complete_fields_validation_passed.png")
+    -Destination (Join-Path $screenshotsDir "02_notice_a_prompt_v2_complete_fields_validation_passed.png")
 
 Save-ResultImage `
     -Heading "notice_b.txt | Prompt V2 | missing values remain null" `
     -Content $bContent `
-    -Destination (Join-Path $experimentDir "03_notice_b_prompt_v2_nulls_validation_passed.png")
+    -Destination (Join-Path $screenshotsDir "03_notice_b_prompt_v2_nulls_validation_passed.png")
 
 Save-ResultImage `
     -Heading "notice_c.txt | Prompt V2 | multi-date classification" `
     -Content $cContent `
-    -Destination (Join-Path $experimentDir "04_notice_c_prompt_v2_multi_date_classification.png")
+    -Destination (Join-Path $screenshotsDir "04_notice_c_prompt_v2_multi_date_classification.png")

@@ -13,6 +13,7 @@ from advanced_prompts import ADVANCED_PROMPTS
 from advanced_schemas import AdvancedConferenceInfo
 from validate_schema import (
     BASE_DIR,
+    DATA_DIR,
     REQUEST_TIMEOUT_SECONDS,
     create_client,
     expand_selection,
@@ -22,7 +23,7 @@ from validate_schema import (
 )
 
 
-NOTICE_D_PATH = BASE_DIR / "notice_d.txt"
+NOTICE_D_PATH = DATA_DIR / "notice_d.txt"
 TEMPERATURE = 0.1
 
 

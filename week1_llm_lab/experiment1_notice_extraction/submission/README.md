@@ -6,21 +6,29 @@
 
 ```text
 experiment1_notice_extraction/
-├── notice_a.txt                 # 信息完整的会议通知
-├── notice_b.txt                 # 缺失日期、费用等信息的会议通知
-├── notice_c.txt                 # 包含多类日期的会议通知
-├── notice_d.txt                 # AIIoT 2027 进阶通知
-├── prompts.py                   # Prompt V1 和 V2
-├── schemas.py                   # Pydantic 数据模型和校验规则
-├── validate_schema.py           # 统一运行入口
-├── advanced_prompts.py          # 进阶 Prompt V1 和 V2
-├── advanced_schemas.py          # 进阶费用和注册政策模型
-├── advanced_extract.py          # 进阶任务运行入口
-├── test_extract.py              # 兼容旧命令的入口包装
-├── requirements.txt             # Python 依赖
-├── outputs/                     # 校验后的 JSON 和原始模型响应
-├── render_result_screenshots.ps1 # 基础任务结果截图
-└── render_advanced_screenshots.ps1 # 进阶任务结果截图
+├── data/
+│   ├── notice_a.txt             # 信息完整的会议通知
+│   ├── notice_b.txt             # 缺失日期、费用等信息的会议通知
+│   ├── notice_c.txt             # 包含多类日期的会议通知
+│   └── notice_d.txt             # AIIoT 2027 进阶通知
+├── src/
+│   ├── prompts.py               # 基础 Prompt V1 和 V2
+│   ├── schemas.py               # 基础 Pydantic 数据模型
+│   ├── validate_schema.py       # 基础任务统一入口
+│   ├── advanced_prompts.py      # 进阶 Prompt V1 和 V2
+│   ├── advanced_schemas.py      # 进阶费用和注册政策模型
+│   ├── advanced_extract.py      # 进阶任务入口
+│   └── test_extract.py          # 兼容旧命令的入口包装
+├── outputs/                     # JSON 和原始模型响应
+├── screenshots/                 # 运行结果截图
+├── submission/
+│   ├── README.md
+│   ├── 实验总结.md
+│   └── 进阶实验总结.md
+├── tools/
+│   ├── render_result_screenshots.ps1
+│   └── render_advanced_screenshots.ps1
+└── requirements.txt             # Python 依赖
 ```
 
 ## 环境变量
@@ -55,18 +63,20 @@ python -m pip install -r requirements.txt
 
 脚本会根据参数读取实验目录内的固定通知文件，不依赖当前终端中手工输入通知文本。
 
+以下命令均在 `experiment1_notice_extraction` 根目录执行。
+
 运行单个通知和单个 Prompt：
 
 ```powershell
-python validate_schema.py --notice a --prompt-version 1
-python validate_schema.py --notice b --prompt-version 2
-python validate_schema.py --notice c --prompt-version 2
+python src\validate_schema.py --notice a --prompt-version 1
+python src\validate_schema.py --notice b --prompt-version 2
+python src\validate_schema.py --notice c --prompt-version 2
 ```
 
 运行 A/B/C 与两个 Prompt 的全部组合：
 
 ```powershell
-python validate_schema.py --notice all --prompt-version all
+python src\validate_schema.py --notice all --prompt-version all
 ```
 
 该命令会执行 6 次模型调用，并生成：
@@ -91,7 +101,7 @@ outputs/
 兼容入口也可以使用相同参数：
 
 ```powershell
-python test_extract.py --notice c --prompt-version 1
+python src\test_extract.py --notice c --prompt-version 1
 ```
 
 ## 离线试运行
@@ -99,14 +109,14 @@ python test_extract.py --notice c --prompt-version 1
 `--dry-run` 只检查通知文件读取和 Prompt 选择，不会调用模型：
 
 ```powershell
-python validate_schema.py --dry-run --notice a --prompt-version 2
-python validate_schema.py --dry-run --notice all --prompt-version all
+python src\validate_schema.py --dry-run --notice a --prompt-version 2
+python src\validate_schema.py --dry-run --notice all --prompt-version all
 ```
 
 如果需要查看完整 Prompt：
 
 ```powershell
-python validate_schema.py --dry-run --notice c --prompt-version 1 --show-prompt
+python src\validate_schema.py --dry-run --notice c --prompt-version 1 --show-prompt
 ```
 
 ## 校验规则
@@ -128,20 +138,20 @@ python validate_schema.py --dry-run --notice c --prompt-version 1 --show-prompt
 `render_result_screenshots.ps1` 读取 `outputs/` 中本次真实运行的原始响应和校验结果，生成四张 PNG：
 
 ```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\render_result_screenshots.ps1
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\render_result_screenshots.ps1
 ```
 
 该脚本不会调用模型 API。
 
 ## AIIoT 2027 进阶任务
 
-进阶任务使用 `notice_d.txt`，单独验证三类参会者和两个收费阶段：
+进阶任务使用 `data/notice_d.txt`，单独验证三类参会者和两个收费阶段：
 
 ```powershell
-python advanced_extract.py --dry-run --prompt-version all
-python advanced_extract.py --prompt-version 1
-python advanced_extract.py --prompt-version 2
-python advanced_extract.py --prompt-version all
+python src\advanced_extract.py --dry-run --prompt-version all
+python src\advanced_extract.py --prompt-version 1
+python src\advanced_extract.py --prompt-version 2
+python src\advanced_extract.py --prompt-version all
 ```
 
 运行结果保存为：
@@ -168,7 +178,7 @@ outputs/
 生成进阶截图：
 
 ```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\render_advanced_screenshots.ps1
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\render_advanced_screenshots.ps1
 ```
 
 该脚本同样不会调用模型 API。详细结果见 `进阶实验总结.md`。

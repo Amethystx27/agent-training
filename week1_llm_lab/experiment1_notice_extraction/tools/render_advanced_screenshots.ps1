@@ -1,7 +1,11 @@
 $ErrorActionPreference = "Stop"
 
-$experimentDir = $PSScriptRoot
-$outputsDir = Join-Path $experimentDir "outputs"
+$projectDir = Split-Path -Parent $PSScriptRoot
+$outputsDir = Join-Path $projectDir "outputs"
+$screenshotsDir = Join-Path $projectDir "screenshots"
+if (-not (Test-Path -LiteralPath $screenshotsDir)) {
+    New-Item -ItemType Directory -Path $screenshotsDir | Out-Null
+}
 
 Add-Type -AssemblyName System.Drawing
 
@@ -121,7 +125,7 @@ $jsonV2 = Read-Utf8File (Join-Path $outputsDir "notice_d_prompt_v2.json")
 
 $summary = @"
 COMMAND EXECUTED
-PS $experimentDir> python advanced_extract.py --prompt-version all
+PS $projectDir> python src\advanced_extract.py --prompt-version all
 
 FINAL STORED RESULTS
 notice_d_prompt_v1.json  STRICT ADVANCED VALIDATION PASSED
@@ -173,14 +177,14 @@ Saved JSON: outputs/notice_d_prompt_v2.json
 Save-ResultImage `
     -Heading "notice_d.txt | final advanced run summary" `
     -Content $summary `
-    -Destination (Join-Path $experimentDir "05_notice_d_advanced_run_summary.png")
+    -Destination (Join-Path $screenshotsDir "05_notice_d_advanced_run_summary.png")
 
 Save-ResultImage `
     -Heading "notice_d.txt | Prompt V1 | six fee combinations" `
     -Content $v1Content `
-    -Destination (Join-Path $experimentDir "06_notice_d_prompt_v1_six_fee_combinations.png")
+    -Destination (Join-Path $screenshotsDir "06_notice_d_prompt_v1_six_fee_combinations.png")
 
 Save-ResultImage `
     -Heading "notice_d.txt | Prompt V2 | policy and fee matrix" `
     -Content $v2Content `
-    -Destination (Join-Path $experimentDir "07_notice_d_prompt_v2_policy_and_fee_matrix.png")
+    -Destination (Join-Path $screenshotsDir "07_notice_d_prompt_v2_policy_and_fee_matrix.png")

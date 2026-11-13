@@ -15,13 +15,15 @@ from prompts import PROMPTS
 from schemas import ConferenceInfo
 
 
-BASE_DIR = Path(__file__).resolve().parent
+SOURCE_DIR = Path(__file__).resolve().parent
+BASE_DIR = SOURCE_DIR.parent
+DATA_DIR = BASE_DIR / "data"
 OUTPUTS_DIR = BASE_DIR / "outputs"
 RAW_OUTPUTS_DIR = OUTPUTS_DIR / "raw"
 NOTICE_FILES = {
-    "a": BASE_DIR / "notice_a.txt",
-    "b": BASE_DIR / "notice_b.txt",
-    "c": BASE_DIR / "notice_c.txt",
+    "a": DATA_DIR / "notice_a.txt",
+    "b": DATA_DIR / "notice_b.txt",
+    "c": DATA_DIR / "notice_c.txt",
 }
 ENV_FILES = (
     BASE_DIR / ".env",
@@ -40,7 +42,7 @@ def load_environment() -> None:
 
 
 def load_notice(notice_key: str) -> str:
-    """Read one of the fixed A/B/C notices from this experiment directory."""
+    """Read one of the fixed A/B/C notices from the data directory."""
 
     path = NOTICE_FILES[notice_key]
     if not path.is_file():
