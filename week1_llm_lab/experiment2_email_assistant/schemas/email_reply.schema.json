@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "email_reply.schema.json",
+  "title": "Conference Email Reply Draft",
+  "description": "基于原始邮件、分析结果和会议事实卡生成的英文回复草稿。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "subject",
+    "body",
+    "requires_human_review",
+    "review_reason"
+  ],
+  "properties": {
+    "subject": {
+      "type": "string",
+      "minLength": 1
+    },
+    "body": {
+      "type": "string",
+      "minLength": 1,
+      "description": "英文纯文本草稿，不包含自动发送动作。"
+    },
+    "requires_human_review": {
+      "type": "boolean"
+    },
+    "review_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "requires_human_review": {
+            "const": true
+          }
+        },
+        "required": [
+          "requires_human_review"
+        ]
+      },
+      "then": {
+        "properties": {
+          "review_reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "requires_human_review": {
+            "const": false
+          }
+        },
+        "required": [
+          "requires_human_review"
+        ]
+      },
+      "then": {
+        "properties": {
+          "review_reason": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ]
+}

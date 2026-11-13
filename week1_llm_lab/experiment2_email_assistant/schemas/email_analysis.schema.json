@@ -1,0 +1,181 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "email_analysis.schema.json",
+  "title": "Conference Email Analysis",
+  "description": "单封会议邮件的意图识别和信息提取结果。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "sender",
+    "subject",
+    "conference_name",
+    "primary_intent",
+    "secondary_intents",
+    "user_role",
+    "questions",
+    "extracted_entities",
+    "requires_human_review",
+    "review_reason"
+  ],
+  "properties": {
+    "sender": {
+      "type": "string",
+      "minLength": 1,
+      "format": "email"
+    },
+    "subject": {
+      "type": "string",
+      "minLength": 1
+    },
+    "conference_name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "primary_intent": {
+      "$ref": "#/$defs/intent"
+    },
+    "secondary_intents": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/intent"
+      },
+      "uniqueItems": true
+    },
+    "user_role": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "仅在邮件明确说明时填写，例如 author、student author、reviewer、attendee。"
+    },
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "extracted_entities": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "paper_title",
+        "registration_email",
+        "claimed_fee",
+        "payment_status_claim",
+        "requested_services",
+        "technical_issue"
+      ],
+      "properties": {
+        "paper_title": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "registration_email": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "email"
+        },
+        "claimed_fee": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "保留用户原文中的费用陈述，不能视为已核实事实。"
+        },
+        "payment_status_claim": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "保留用户关于付款状态的陈述，不能视为系统已确认。"
+        },
+        "requested_services": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "technical_issue": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "requires_human_review": {
+      "type": "boolean"
+    },
+    "review_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "requires_human_review": {
+            "const": true
+          }
+        },
+        "required": [
+          "requires_human_review"
+        ]
+      },
+      "then": {
+        "properties": {
+          "review_reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "requires_human_review": {
+            "const": false
+          }
+        },
+        "required": [
+          "requires_human_review"
+        ]
+      },
+      "then": {
+        "properties": {
+          "review_reason": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "intent": {
+      "type": "string",
+      "enum": [
+        "registration_inquiry",
+        "submission_deadline",
+        "acceptance_inquiry",
+        "payment_inquiry",
+        "accommodation_inquiry",
+        "certificate_request",
+        "paper_update_request",
+        "technical_issue",
+        "other"
+      ]
+    }
+  }
+}

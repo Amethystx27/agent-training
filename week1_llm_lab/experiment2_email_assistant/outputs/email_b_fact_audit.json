@@ -1,0 +1,24 @@
+{
+  "email_id": "B",
+  "conference_name": "ICCBDA 2027",
+  "fact_card_id": "iccbda_2027",
+  "method": "deterministic_fact_check",
+  "all_questions_covered": true,
+  "items": [
+    {
+      "question_index": 0,
+      "question": "Could you let me know whether my paper has been accepted?",
+      "topic": "personal_acceptance_status",
+      "status": "prohibited",
+      "fact_reference": "acceptance_result_policy",
+      "evidence": "Personal acceptance results can only be checked through the submission system and must not be disclosed in email.",
+      "requires_human_review": true,
+      "review_reason": "Personal paper acceptance decisions must not be disclosed by email and require human handling.",
+      "response_guidance": "Do not state an acceptance result. Direct the sender to the submission system and use the human-review marker."
+    }
+  ],
+  "requires_human_review": true,
+  "review_reasons": [
+    "Personal paper acceptance decisions must not be disclosed by email and require human handling."
+  ]
+}

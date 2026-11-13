@@ -1,0 +1,21 @@
+{
+  "sender": "liu.yang@example.net",
+  "subject": "Unable to Upload My Manuscript",
+  "conference_name": "ICCBDA 2027",
+  "primary_intent": "technical_issue",
+  "secondary_intents": [],
+  "user_role": null,
+  "questions": [
+    "Could you please advise me on how to proceed?"
+  ],
+  "extracted_entities": {
+    "paper_title": null,
+    "registration_email": null,
+    "claimed_fee": null,
+    "payment_status_claim": null,
+    "requested_services": [],
+    "technical_issue": "The submission system page keeps showing an error after clicking the Submit button; the problem remains after trying two different browsers."
+  },
+  "requires_human_review": false,
+  "review_reason": null
+}

@@ -1,0 +1,36 @@
+{
+  "fact_card_id": "aiiot_2027",
+  "version": "1.0.0",
+  "conference_name": "AIIoT 2027",
+  "conference_dates": "June 18–20, 2027",
+  "location": "Chengdu, China",
+  "registration_fees": {
+    "currency": "USD",
+    "student_author_early_bird": 280,
+    "student_author_regular": 350
+  },
+  "early_bird_deadline": "May 1, 2027",
+  "student_eligibility": "Valid full-time student status is required.",
+  "student_proof": "A student ID or official enrollment certificate is required.",
+  "accommodation_information": {
+    "status": "not_announced",
+    "hotel_recommendations": "not_provided",
+    "negotiated_conference_rate": "not_provided",
+    "nightly_price": "not_provided",
+    "breakfast_information": "not_provided"
+  },
+  "invoice_information": {
+    "invoice_policy": "not_provided",
+    "tax_id_requirement": "not_provided",
+    "invoice_before_payment": "not_provided"
+  },
+  "grounding_rules": [
+    "The model may use only information explicitly provided in this fact card.",
+    "Missing information must be identified as unavailable and must not be invented.",
+    "The sender's statement that she is a PhD student or will present a paper is a user claim, not verified eligibility.",
+    "The early-bird fee applies only if the relevant conditions and deadline are satisfied.",
+    "The email does not supply a current date or payment date, so a payment described as next week cannot be evaluated against May 1, 2027.",
+    "Accommodation recommendations, hotel rates, breakfast arrangements, invoice policy and tax-ID handling must not be invented.",
+    "Invoice and payment-policy questions require human review."
+  ]
+}

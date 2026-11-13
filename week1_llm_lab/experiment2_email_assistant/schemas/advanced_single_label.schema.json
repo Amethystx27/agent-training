@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "advanced_single_label.schema.json",
+  "title": "Advanced Email Single-Label Classification",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "email_id",
+    "method",
+    "predicted_intent",
+    "reason"
+  ],
+  "properties": {
+    "email_id": {
+      "const": "G"
+    },
+    "method": {
+      "const": "single_label"
+    },
+    "predicted_intent": {
+      "$ref": "#/$defs/intent"
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "$defs": {
+    "intent": {
+      "type": "string",
+      "enum": [
+        "registration_inquiry",
+        "submission_deadline",
+        "acceptance_inquiry",
+        "payment_inquiry",
+        "accommodation_inquiry",
+        "certificate_request",
+        "paper_update_request",
+        "technical_issue",
+        "other"
+      ]
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "fact_card_id": "iccbda_2027",
+  "version": "1.0.0",
+  "conference_name": "ICCBDA 2027",
+  "conference_dates": "May 21–23, 2027",
+  "location": "Xihua University, Chengdu, China",
+  "full_paper_submission_deadline": "February 15, 2027",
+  "registration_fees": {
+    "currency": "USD",
+    "student_author": 350,
+    "regular_author": 450,
+    "listener": 180
+  },
+  "accommodation_information": "尚未公布，请关注会议官方通知",
+  "acceptance_result_policy": "只能通过投稿系统查询；邮件中不提供个人录用结论",
+  "refund_policy": {
+    "status": "not_provided",
+    "handling": "未提供正式政策，必须转人工确认"
+  },
+  "contact_email": "iccbda2027@example.org",
+  "grounding_rules": [
+    "模型只能依据本事实卡回复。",
+    "事实卡未提供的信息不得编造，应明确说明目前无法确认。",
+    "退款、付款争议、录用结果和作者信息变更必须人工审核。",
+    "不得承诺退款，不得确认未核验的付款状态，不得判断个人论文录用结果。"
+  ]
+}

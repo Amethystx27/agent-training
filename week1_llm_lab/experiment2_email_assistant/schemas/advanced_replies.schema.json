@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "advanced_replies.schema.json",
+  "title": "Advanced Email Three-Style Replies",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "email_id",
+    "conference_name",
+    "replies"
+  ],
+  "properties": {
+    "email_id": {
+      "const": "G"
+    },
+    "conference_name": {
+      "const": "AIIoT 2027"
+    },
+    "replies": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "formal",
+        "concise",
+        "friendly"
+      ],
+      "properties": {
+        "formal": {
+          "$ref": "#/$defs/reply"
+        },
+        "concise": {
+          "$ref": "#/$defs/reply"
+        },
+        "friendly": {
+          "$ref": "#/$defs/reply"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "reply": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "style",
+        "subject",
+        "body",
+        "requires_human_review",
+        "review_reason",
+        "facts_used",
+        "unknown_items"
+      ],
+      "properties": {
+        "style": {
+          "type": "string"
+        },
+        "subject": {
+          "type": "string",
+          "minLength": 1
+        },
+        "body": {
+          "type": "string",
+          "minLength": 1
+        },
+        "requires_human_review": {
+          "const": true
+        },
+        "review_reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "facts_used": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "unknown_items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

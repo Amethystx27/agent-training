@@ -1,0 +1,36 @@
+{
+  "email_id": "E",
+  "conference_name": "ICCBDA 2027",
+  "fact_card_id": "iccbda_2027",
+  "method": "deterministic_fact_check",
+  "all_questions_covered": true,
+  "items": [
+    {
+      "question_index": 0,
+      "question": "Whether I can receive a full refund",
+      "topic": "full_refund_eligibility",
+      "status": "prohibited",
+      "fact_reference": "refund_policy",
+      "evidence": "No formal refund policy is provided, and refunds must be confirmed by staff.",
+      "requires_human_review": true,
+      "review_reason": "Refund eligibility must be reviewed manually because no formal refund policy is provided.",
+      "response_guidance": "Do not promise a full refund. State that the request requires review by the conference secretariat."
+    },
+    {
+      "question_index": 1,
+      "question": "How long the process will take",
+      "topic": "refund_processing_time",
+      "status": "unknown",
+      "fact_reference": null,
+      "evidence": "No refund processing timeline is provided in the fact card.",
+      "requires_human_review": true,
+      "review_reason": "No refund processing timeline is available and the case requires human review.",
+      "response_guidance": "Do not provide a processing time. State that the request requires review by the conference secretariat."
+    }
+  ],
+  "requires_human_review": true,
+  "review_reasons": [
+    "Refund eligibility must be reviewed manually because no formal refund policy is provided.",
+    "No refund processing timeline is available and the case requires human review."
+  ]
+}

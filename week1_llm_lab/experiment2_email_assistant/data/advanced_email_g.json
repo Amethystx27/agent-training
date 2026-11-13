@@ -1,0 +1,10 @@
+{
+  "email_id": "G",
+  "source_file": "email list/email_g.txt",
+  "subject": "Quick Qs about AIIoT 2027 registration, hotel and invoice",
+  "sender": "emily.johnson@example.net",
+  "recipient": "registration@aiiot2027.example.org",
+  "conference_name": "AIIoT 2027",
+  "email_date": null,
+  "body": "Dear Conference Team,\n\nHope you are doing well!\n\nI'm planning to attend AIIoT 2027, but I have a few quick questions.\n\nFirst, I'm a PhD student and will be presenting a paper at the conference. Can I still get the student registration rate? I saw the student fee is USD 280 for early bird registration. Is that correct? Also, if I pay next week, will I still be able to get this price?\n\nSecond, do you have any recommanded hotels near the conference venue? I would prefer a hotel within walking distance, maybe with a special discount for conference participants. How much would it cost per night? Is breakfast included?\n\nFinally, I need an official invoice for my university's reimbursement. Can you issue an invoice with my university's full name and tax ID? If possible, could you also send me the invoice before I make the payment?\n\nSorry for asking so many questions! I just want to make sure everything is ready before booking my flight.\n\nThanks a lot for your help!\n\nBest regards,\nEmily Johnson\nPhD Student"
+}

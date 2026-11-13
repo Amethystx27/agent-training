@@ -1,0 +1,20 @@
+{
+  "email_id": "G",
+  "method": "multi_label",
+  "primary_intent": "registration_inquiry",
+  "secondary_intents": [
+    "accommodation_inquiry",
+    "payment_inquiry"
+  ],
+  "intents": [
+    "registration_inquiry",
+    "accommodation_inquiry",
+    "payment_inquiry"
+  ],
+  "business_intents": [
+    "registration_inquiry",
+    "accommodation_inquiry",
+    "invoice_request"
+  ],
+  "reason": "The email asks about student registration eligibility and early-bird pricing, requests hotel recommendations and rates, and requests an official invoice with tax ID details, including whether it can be sent before payment."
+}

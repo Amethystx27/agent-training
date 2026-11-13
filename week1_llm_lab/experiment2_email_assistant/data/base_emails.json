@@ -1,0 +1,72 @@
+{
+  "dataset_id": "experiment2_base_emails",
+  "version": "1.0.0",
+  "conference_name": "ICCBDA 2027",
+  "scope": "基础实验 A-F；不包含进阶邮件 G",
+  "source_document": "实验2 会议邮件智能回复助手.docx",
+  "source_section": "4. 代表性英文邮件样本",
+  "encoding": "UTF-8",
+  "email_count": 6,
+  "emails": [
+    {
+      "email_id": "A",
+      "source_file": "email list/email_a.txt",
+      "description": "注册费用及投稿截止日期咨询",
+      "subject": "Inquiry About Registration Fee and Submission Deadline",
+      "sender": "john.smith@example.net",
+      "recipient": null,
+      "conference_name": "ICCBDA 2027",
+      "body": "Dear Conference Organizing Committee,\n\nI am interested in attending ICCBDA 2027. Could you please confirm whether the registration fee for student authors is USD 350?\n\nI would also like to know the full paper submission deadline, as I am preparing my manuscript.\n\nThank you for your assistance.\n\nBest regards,\nJohn Smith"
+    },
+    {
+      "email_id": "B",
+      "source_file": "email list/email_b.txt",
+      "description": "论文录用结果咨询（需要谨慎处理）",
+      "subject": "Request for Paper Acceptance Status",
+      "sender": "maria.chen@example.net",
+      "recipient": null,
+      "conference_name": "ICCBDA 2027",
+      "body": "Dear Organizing Committee,\n\nI submitted a paper entitled \"Privacy-Preserving Edge Intelligence for IoT Networks\" to ICCBDA 2027 two weeks ago.\n\nCould you let me know whether my paper has been accepted? I need the decision soon to arrange my travel.\n\nBest regards,\nMaria Chen"
+    },
+    {
+      "email_id": "C",
+      "source_file": "email list/email_c.txt",
+      "description": "注册付款及发票咨询",
+      "subject": "Payment Confirmation and Invoice Request",
+      "sender": "david.lee@example.net",
+      "recipient": null,
+      "conference_name": "ICCBDA 2027",
+      "body": "Dear Conference Secretariat,\n\nI completed the registration payment yesterday, but I have not received a confirmation email.\n\nCould you please check whether my payment has been received? I would also like to request an official invoice for my university reimbursement.\n\nMy registration email is david.lee@example.net.\n\nThank you,\nDavid Lee"
+    },
+    {
+      "email_id": "D",
+      "source_file": "email list/email_d.txt",
+      "description": "住宿与交通咨询",
+      "subject": "Accommodation and Transportation Information",
+      "sender": "anna.wilson@example.net",
+      "recipient": null,
+      "conference_name": "ICCBDA 2027",
+      "body": "Dear Organizing Committee,\n\nI plan to attend ICCBDA 2027 in Chengdu. Could you recommend hotels near the conference venue?\n\nI would also appreciate information about transportation from Chengdu Tianfu International Airport to the university.\n\nBest regards,\nAnna Wilson"
+    },
+    {
+      "email_id": "E",
+      "source_file": "email list/email_e.txt",
+      "description": "退款申请（必须人工处理）",
+      "subject": "Request for Registration Fee Refund",
+      "sender": "peter.brown@example.net",
+      "recipient": null,
+      "conference_name": "ICCBDA 2027",
+      "body": "Dear Secretariat,\n\nUnfortunately, I can no longer attend ICCBDA 2027 due to an unexpected change in my schedule.\n\nI have already paid the registration fee. Could you please let me know whether I can receive a full refund and how long the process will take?\n\nI would appreciate your help.\n\nSincerely,\nPeter Brown"
+    },
+    {
+      "email_id": "F",
+      "source_file": "email list/email_f.txt",
+      "description": "投稿系统技术问题",
+      "subject": "Unable to Upload My Manuscript",
+      "sender": "liu.yang@example.net",
+      "recipient": null,
+      "conference_name": "ICCBDA 2027",
+      "body": "Dear Technical Support Team,\n\nI am trying to upload my paper to the submission system, but the page keeps showing an error after I click the Submit button.\n\nI have tried using two different browsers, but the problem remains.\n\nCould you please advise me on how to proceed?\n\nBest regards,\nYang Liu"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "email_id": "A",
+  "conference_name": "ICCBDA 2027",
+  "fact_card_id": "iccbda_2027",
+  "method": "deterministic_fact_check",
+  "all_questions_covered": true,
+  "items": [
+    {
+      "question_index": 0,
+      "question": "Could you please confirm whether the registration fee for student authors is USD 350?",
+      "topic": "student_author_registration_fee",
+      "status": "supported",
+      "fact_reference": "registration_fees.student_author",
+      "evidence": "Student author registration fee is USD 350.",
+      "requires_human_review": false,
+      "review_reason": null,
+      "response_guidance": "Confirm the student author registration fee as USD 350."
+    },
+    {
+      "question_index": 1,
+      "question": "I would also like to know the full paper submission deadline, as I am preparing my manuscript.",
+      "topic": "full_paper_submission_deadline",
+      "status": "supported",
+      "fact_reference": "full_paper_submission_deadline",
+      "evidence": "Full paper submission deadline is February 15, 2027.",
+      "requires_human_review": false,
+      "review_reason": null,
+      "response_guidance": "State the full paper submission deadline as February 15, 2027."
+    }
+  ],
+  "requires_human_review": false,
+  "review_reasons": []
+}

@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "advanced_multi_label.schema.json",
+  "title": "Advanced Email Multi-Label Classification",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "email_id",
+    "method",
+    "primary_intent",
+    "secondary_intents",
+    "intents",
+    "business_intents",
+    "reason"
+  ],
+  "properties": {
+    "email_id": {
+      "const": "G"
+    },
+    "method": {
+      "const": "multi_label"
+    },
+    "primary_intent": {
+      "$ref": "#/$defs/intent"
+    },
+    "secondary_intents": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/intent"
+      },
+      "uniqueItems": true
+    },
+    "intents": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/intent"
+      },
+      "uniqueItems": true
+    },
+    "business_intents": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "enum": [
+          "registration_inquiry",
+          "accommodation_inquiry",
+          "invoice_request"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "$defs": {
+    "intent": {
+      "type": "string",
+      "enum": [
+        "registration_inquiry",
+        "submission_deadline",
+        "acceptance_inquiry",
+        "payment_inquiry",
+        "accommodation_inquiry",
+        "certificate_request",
+        "paper_update_request",
+        "technical_issue",
+        "other"
+      ]
+    }
+  }
+}

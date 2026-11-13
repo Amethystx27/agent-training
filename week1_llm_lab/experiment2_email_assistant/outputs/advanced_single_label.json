@@ -1,0 +1,6 @@
+{
+  "email_id": "G",
+  "method": "single_label",
+  "predicted_intent": "registration_inquiry",
+  "reason": "The email’s main and first set of questions concerns student registration eligibility and early-bird pricing, while hotel and invoice questions are secondary topics."
+}

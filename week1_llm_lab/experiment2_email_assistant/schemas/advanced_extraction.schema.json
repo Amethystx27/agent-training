@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "advanced_extraction.schema.json",
+  "title": "Advanced Email Information Extraction",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "email_id",
+    "subject",
+    "sender",
+    "recipient",
+    "conference_name",
+    "user_role",
+    "questions",
+    "extracted_entities",
+    "requires_human_review",
+    "review_reason"
+  ],
+  "properties": {
+    "email_id": {
+      "const": "G"
+    },
+    "subject": {
+      "type": "string"
+    },
+    "sender": {
+      "type": "string",
+      "format": "email"
+    },
+    "recipient": {
+      "type": "string",
+      "format": "email"
+    },
+    "conference_name": {
+      "const": "AIIoT 2027"
+    },
+    "user_role": {
+      "type": "string"
+    },
+    "questions": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "business_area",
+          "text",
+          "request_type"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "business_area": {
+            "type": "string",
+            "enum": [
+              "registration",
+              "accommodation",
+              "invoice"
+            ]
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1
+          },
+          "request_type": {
+            "type": "string",
+            "enum": [
+              "question",
+              "preference",
+              "request"
+            ]
+          }
+        }
+      }
+    },
+    "extracted_entities": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "paper_presentation_claim",
+        "student_status_claim",
+        "quoted_early_bird_fee",
+        "payment_timing",
+        "accommodation_preferences",
+        "invoice_requirements",
+        "language_notes"
+      ],
+      "properties": {
+        "paper_presentation_claim": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "student_status_claim": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "quoted_early_bird_fee": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "payment_timing": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "accommodation_preferences": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "invoice_requirements": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "language_notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "requires_human_review": {
+      "const": true
+    },
+    "review_reason": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

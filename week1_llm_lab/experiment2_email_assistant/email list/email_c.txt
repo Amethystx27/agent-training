@@ -1,0 +1,14 @@
+C：注册付款及发票咨询
+Subject: Payment Confirmation and Invoice Request
+From: david.lee@example.net
+
+Dear Conference Secretariat,
+
+I completed the registration payment yesterday, but I have not received a confirmation email.
+
+Could you please check whether my payment has been received? I would also like to request an official invoice for my university reimbursement.
+
+My registration email is david.lee@example.net.
+
+Thank you,
+David Lee

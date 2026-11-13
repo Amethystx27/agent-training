@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "email_fact_audit.schema.json",
+  "title": "Conference Email Fact Audit",
+  "description": "将邮件中的每个问题对照会议事实卡进行核验的结果。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "email_id",
+    "conference_name",
+    "fact_card_id",
+    "method",
+    "all_questions_covered",
+    "items",
+    "requires_human_review",
+    "review_reasons"
+  ],
+  "properties": {
+    "email_id": {
+      "type": "string",
+      "pattern": "^[A-F]$"
+    },
+    "conference_name": {
+      "type": "string"
+    },
+    "fact_card_id": {
+      "type": "string"
+    },
+    "method": {
+      "const": "deterministic_fact_check"
+    },
+    "all_questions_covered": {
+      "type": "boolean"
+    },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "question_index",
+          "question",
+          "topic",
+          "status",
+          "fact_reference",
+          "evidence",
+          "requires_human_review",
+          "review_reason",
+          "response_guidance"
+        ],
+        "properties": {
+          "question_index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "question": {
+            "type": "string",
+            "minLength": 1
+          },
+          "topic": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "supported",
+              "unknown",
+              "prohibited",
+              "actionable_without_fact"
+            ]
+          },
+          "fact_reference": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "evidence": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "requires_human_review": {
+            "type": "boolean"
+          },
+          "review_reason": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "response_guidance": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "requires_human_review": {
+      "type": "boolean"
+    },
+    "review_reasons": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    }
+  }
+}

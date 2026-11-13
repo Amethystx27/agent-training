@@ -1,0 +1,89 @@
+{
+  "email_id": "G",
+  "conference_name": "AIIoT 2027",
+  "replies": {
+    "formal": {
+      "style": "formal",
+      "subject": "Re: Quick Qs about AIIoT 2027 registration, hotel and invoice",
+      "body": "Dear Ms. Johnson,\n\nThank you for your inquiry regarding AIIoT 2027. The student author early-bird fee is USD 280, and the early-bird deadline is May 1, 2027. The student rate requires valid full-time student status and a student ID or official enrollment certificate. Eligibility remains subject to verification of those requirements. We cannot confirm that a payment made next week will qualify for the early-bird fee; the USD 280 rate applies only if payment is completed by May 1, 2027 and the eligibility requirements are met.\n\nHotel and accommodation information has not yet been announced. We are therefore unable to provide hotel recommendations, confirm walking distance or a conference participant discount, state a nightly rate, or confirm breakfast arrangements at this time.\n\n[HUMAN REVIEW REQUIRED] Invoice policy and tax-ID handling are not currently available. We cannot promise that an invoice will be issued, that your university's full name and tax ID can be included, or that an invoice can be provided before payment. Your invoice request requires review by the conference secretariat.\n\nWe hope this information is helpful. Please let us know if you have any further questions.\n\nSincerely,\nConference Secretariat\nAIIoT 2027",
+      "requires_human_review": true,
+      "review_reason": "Invoice policy, tax-ID handling, and pre-payment invoice issuance are not documented, so this request requires human review by the conference secretariat.",
+      "facts_used": [
+        "Conference name: AIIoT 2027",
+        "Student author early-bird fee: USD 280",
+        "Early-bird deadline: May 1, 2027",
+        "Student eligibility: valid full-time student status is required",
+        "Student proof: a student ID or official enrollment certificate is required",
+        "Accommodation information status: not announced",
+        "Hotel recommendations, negotiated conference rate, nightly price, and breakfast information: not provided",
+        "Invoice policy: not provided",
+        "Tax-ID requirement: not provided",
+        "Invoice before payment: not provided"
+      ],
+      "unknown_items": [
+        "Hotel recommendations",
+        "Walking distance to the conference venue",
+        "Conference participant hotel discount",
+        "Hotel nightly rate",
+        "Breakfast arrangements",
+        "Invoice policy",
+        "Tax-ID handling and invoice content requirements",
+        "Invoice issuance before payment",
+        "Current date or specific proposed payment date for evaluating next week's payment"
+      ]
+    },
+    "concise": {
+      "style": "concise",
+      "subject": "Re: Quick Qs about AIIoT 2027 registration, hotel and invoice",
+      "body": "Dear Emily,\n\nThank you for your questions.\n\n- Student rate: The student author early-bird fee is USD 280, and the early-bird deadline is May 1, 2027. The student rate requires valid full-time student status and a student ID or official enrollment certificate. Eligibility remains subject to verification.\n- Next-week payment: The USD 280 rate applies only if payment is completed by May 1, 2027 and eligibility requirements are met. Because no current date or payment date is provided, I cannot confirm that a payment next week will qualify.\n- Accommodation: Hotel and accommodation information has not yet been announced. No hotel recommendations, negotiated conference rate, walking-distance arrangements, nightly rate, or breakfast arrangements are currently available.\n- Invoice: Invoice policy and tax-ID handling are not currently available. [HUMAN REVIEW REQUIRED] The invoice request, including use of your university's full name and tax ID and issuance before payment, requires review by the conference secretariat; I cannot promise an invoice or issuance before payment.\n\nBest regards,\nAIIoT 2027 Registration Team",
+      "requires_human_review": true,
+      "review_reason": "Invoice policy, tax-ID handling, and invoice-before-payment policy are not documented, so the invoice request requires human review.",
+      "facts_used": [
+        "The student author early-bird fee is USD 280.",
+        "The early-bird deadline is May 1, 2027.",
+        "The student rate requires valid full-time student status and a student ID or official enrollment certificate.",
+        "Accommodation information has not yet been announced.",
+        "Invoice policy and tax-ID handling are not currently available.",
+        "The email does not provide a current date or payment date, so a payment described as next week cannot be evaluated against May 1, 2027."
+      ],
+      "unknown_items": [
+        "Hotel recommendations",
+        "Negotiated conference hotel rate",
+        "Walking distance to the conference venue",
+        "Hotel nightly price",
+        "Breakfast arrangements",
+        "Invoice policy",
+        "Tax-ID requirement and invoice content policy",
+        "Invoice issuance before payment",
+        "Current date or payment date for evaluating next-week payment"
+      ]
+    },
+    "friendly": {
+      "style": "friendly",
+      "subject": "Re: Quick Qs about AIIoT 2027 registration, hotel and invoice",
+      "body": "Dear Emily,\n\nThank you for reaching out about AIIoT 2027. I am happy to help clarify what is currently available.\n\nFor the student author early-bird rate, the fee is USD 280, and the early-bird deadline is May 1, 2027. To use the student rate, valid full-time student status is required, along with a student ID or official enrollment certificate. Eligibility is not verified by this reply; the required proof will need to be provided. The USD 280 rate applies only if payment is completed by May 1, 2027 and all student eligibility requirements are met. Because your email does not include the current date or a specific payment date, I cannot confirm whether a payment next week would qualify.\n\nHotel and accommodation information has not yet been announced. We cannot currently provide hotel recommendations, conference discounts, walking-distance arrangements, nightly rates, or breakfast information.\n\nInvoice policy and tax-ID handling are not currently available, so I cannot confirm whether an invoice can be issued with your university's full name and tax ID, or whether an invoice can be sent before payment. [HUMAN REVIEW REQUIRED] Your invoice request will need review by the conference secretariat.\n\nBest regards,\nConference Secretariat\nAIIoT 2027",
+      "requires_human_review": true,
+      "review_reason": "Invoice policy, tax-ID handling, and pre-payment invoice requests are not documented and require human review.",
+      "facts_used": [
+        "AIIoT 2027",
+        "The student author early-bird fee is USD 280.",
+        "The early-bird deadline is May 1, 2027.",
+        "The student rate requires valid full-time student status.",
+        "A student ID or official enrollment certificate is required for the student rate.",
+        "Hotel and accommodation information has not yet been announced.",
+        "Invoice policy and tax-ID handling are not currently available."
+      ],
+      "unknown_items": [
+        "Whether a payment next week would qualify for the early-bird rate",
+        "Hotel recommendations",
+        "Hotels within walking distance",
+        "Conference hotel discounts",
+        "Hotel nightly rates",
+        "Breakfast arrangements",
+        "Invoice issuance policy",
+        "Tax-ID handling on invoices",
+        "Whether an invoice can be issued before payment"
+      ]
+    }
+  }
+}

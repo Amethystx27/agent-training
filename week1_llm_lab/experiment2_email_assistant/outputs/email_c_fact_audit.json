@@ -1,0 +1,36 @@
+{
+  "email_id": "C",
+  "conference_name": "ICCBDA 2027",
+  "fact_card_id": "iccbda_2027",
+  "method": "deterministic_fact_check",
+  "all_questions_covered": true,
+  "items": [
+    {
+      "question_index": 0,
+      "question": "Could you please check whether my payment has been received?",
+      "topic": "payment_receipt_status",
+      "status": "prohibited",
+      "fact_reference": null,
+      "evidence": "The fact card contains no verified payment record and the sender's payment claim is unverified.",
+      "requires_human_review": true,
+      "review_reason": "Payment receipt status cannot be verified from the fact card and requires human review.",
+      "response_guidance": "Do not confirm payment receipt. State that the payment record requires review by the conference secretariat."
+    },
+    {
+      "question_index": 1,
+      "question": "I would also like to request an official invoice for my university reimbursement.",
+      "topic": "official_invoice_request",
+      "status": "unknown",
+      "fact_reference": null,
+      "evidence": "No invoice policy or invoice handling procedure is provided in the fact card.",
+      "requires_human_review": true,
+      "review_reason": "The invoice request requires human review because no invoice policy is provided.",
+      "response_guidance": "Do not promise an invoice. State that the request requires review by the conference secretariat."
+    }
+  ],
+  "requires_human_review": true,
+  "review_reasons": [
+    "Payment receipt status cannot be verified from the fact card and requires human review.",
+    "The invoice request requires human review because no invoice policy is provided."
+  ]
+}

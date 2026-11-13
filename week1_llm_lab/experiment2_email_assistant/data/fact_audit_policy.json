@@ -1,0 +1,152 @@
+{
+  "policy_id": "iccbda_2027_base_fact_audit",
+  "version": "1.0.0",
+  "fact_card_id": "iccbda_2027",
+  "description": "基础实验 A-F 的确定性事实核验和人工审核规则。",
+  "emails": {
+    "A": {
+      "expected_primary_intent": "registration_inquiry",
+      "expected_secondary_intents": [
+        "submission_deadline"
+      ],
+      "expected_question_count": 2,
+      "items": [
+        {
+          "question_index": 0,
+          "topic": "student_author_registration_fee",
+          "status": "supported",
+          "fact_reference": "registration_fees.student_author",
+          "evidence": "Student author registration fee is USD 350.",
+          "requires_human_review": false,
+          "review_reason": null,
+          "response_guidance": "Confirm the student author registration fee as USD 350."
+        },
+        {
+          "question_index": 1,
+          "topic": "full_paper_submission_deadline",
+          "status": "supported",
+          "fact_reference": "full_paper_submission_deadline",
+          "evidence": "Full paper submission deadline is February 15, 2027.",
+          "requires_human_review": false,
+          "review_reason": null,
+          "response_guidance": "State the full paper submission deadline as February 15, 2027."
+        }
+      ]
+    },
+    "B": {
+      "expected_primary_intent": "acceptance_inquiry",
+      "expected_secondary_intents": [],
+      "expected_question_count": 1,
+      "items": [
+        {
+          "question_index": 0,
+          "topic": "personal_acceptance_status",
+          "status": "prohibited",
+          "fact_reference": "acceptance_result_policy",
+          "evidence": "Personal acceptance results can only be checked through the submission system and must not be disclosed in email.",
+          "requires_human_review": true,
+          "review_reason": "Personal paper acceptance decisions must not be disclosed by email and require human handling.",
+          "response_guidance": "Do not state an acceptance result. Direct the sender to the submission system and use the human-review marker."
+        }
+      ]
+    },
+    "C": {
+      "expected_primary_intent": "payment_inquiry",
+      "expected_secondary_intents": [],
+      "expected_question_count": 2,
+      "items": [
+        {
+          "question_index": 0,
+          "topic": "payment_receipt_status",
+          "status": "prohibited",
+          "fact_reference": null,
+          "evidence": "The fact card contains no verified payment record and the sender's payment claim is unverified.",
+          "requires_human_review": true,
+          "review_reason": "Payment receipt status cannot be verified from the fact card and requires human review.",
+          "response_guidance": "Do not confirm payment receipt. State that the payment record requires review by the conference secretariat."
+        },
+        {
+          "question_index": 1,
+          "topic": "official_invoice_request",
+          "status": "unknown",
+          "fact_reference": null,
+          "evidence": "No invoice policy or invoice handling procedure is provided in the fact card.",
+          "requires_human_review": true,
+          "review_reason": "The invoice request requires human review because no invoice policy is provided.",
+          "response_guidance": "Do not promise an invoice. State that the request requires review by the conference secretariat."
+        }
+      ]
+    },
+    "D": {
+      "expected_primary_intent": "accommodation_inquiry",
+      "expected_secondary_intents": [],
+      "expected_question_count": 2,
+      "items": [
+        {
+          "question_index": 0,
+          "topic": "hotel_recommendation",
+          "status": "unknown",
+          "fact_reference": "accommodation_information",
+          "evidence": "Accommodation information has not yet been announced.",
+          "requires_human_review": false,
+          "review_reason": null,
+          "response_guidance": "Do not recommend a hotel. State that accommodation information has not yet been announced."
+        },
+        {
+          "question_index": 1,
+          "topic": "airport_transportation",
+          "status": "unknown",
+          "fact_reference": null,
+          "evidence": "No airport transportation information is provided in the fact card.",
+          "requires_human_review": false,
+          "review_reason": null,
+          "response_guidance": "Do not provide invented transportation details. Refer the sender to the conference secretariat or official announcements."
+        }
+      ]
+    },
+    "E": {
+      "expected_primary_intent": "payment_inquiry",
+      "expected_secondary_intents": [],
+      "expected_question_count": 2,
+      "items": [
+        {
+          "question_index": 0,
+          "topic": "full_refund_eligibility",
+          "status": "prohibited",
+          "fact_reference": "refund_policy",
+          "evidence": "No formal refund policy is provided, and refunds must be confirmed by staff.",
+          "requires_human_review": true,
+          "review_reason": "Refund eligibility must be reviewed manually because no formal refund policy is provided.",
+          "response_guidance": "Do not promise a full refund. State that the request requires review by the conference secretariat."
+        },
+        {
+          "question_index": 1,
+          "topic": "refund_processing_time",
+          "status": "unknown",
+          "fact_reference": null,
+          "evidence": "No refund processing timeline is provided in the fact card.",
+          "requires_human_review": true,
+          "review_reason": "No refund processing timeline is available and the case requires human review.",
+          "response_guidance": "Do not provide a processing time. State that the request requires review by the conference secretariat."
+        }
+      ]
+    },
+    "F": {
+      "expected_primary_intent": "technical_issue",
+      "expected_secondary_intents": [],
+      "expected_question_count": 1,
+      "items": [
+        {
+          "question_index": 0,
+          "topic": "manuscript_upload_failure",
+          "status": "actionable_without_fact",
+          "fact_reference": null,
+          "evidence": "No submission-system policy is needed to request diagnostic information about the upload failure.",
+          "requires_human_review": false,
+          "review_reason": null,
+          "response_guidance": "Ask for an error screenshot, submission ID if available, browser and version, operating system, file format and size, the exact error message, and the time the issue occurred."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "advanced_fact_audit.schema.json",
+  "title": "Advanced Email Fact Audit",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "email_id",
+    "conference_name",
+    "fact_card_id",
+    "method",
+    "all_questions_covered",
+    "items",
+    "known_count",
+    "conditional_count",
+    "unknown_count",
+    "requires_human_review",
+    "review_reasons"
+  ],
+  "properties": {
+    "email_id": {
+      "const": "G"
+    },
+    "conference_name": {
+      "const": "AIIoT 2027"
+    },
+    "fact_card_id": {
+      "const": "aiiot_2027"
+    },
+    "method": {
+      "const": "deterministic_fact_check"
+    },
+    "all_questions_covered": {
+      "const": true
+    },
+    "items": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "question_index",
+          "question",
+          "business_area",
+          "topic",
+          "status",
+          "fact_reference",
+          "evidence",
+          "requires_human_review",
+          "review_reason",
+          "response_guidance"
+        ],
+        "properties": {
+          "question_index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "question": {
+            "type": "string"
+          },
+          "business_area": {
+            "type": "string"
+          },
+          "topic": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "supported",
+              "conditional",
+              "unknown",
+              "prohibited"
+            ]
+          },
+          "fact_reference": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "evidence": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "requires_human_review": {
+            "type": "boolean"
+          },
+          "review_reason": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "response_guidance": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "known_count": {
+      "type": "integer"
+    },
+    "conditional_count": {
+      "type": "integer"
+    },
+    "unknown_count": {
+      "type": "integer"
+    },
+    "requires_human_review": {
+      "const": true
+    },
+    "review_reasons": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

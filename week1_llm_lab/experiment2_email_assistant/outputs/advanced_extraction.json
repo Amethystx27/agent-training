@@ -1,0 +1,95 @@
+{
+  "email_id": "G",
+  "subject": "Quick Qs about AIIoT 2027 registration, hotel and invoice",
+  "sender": "emily.johnson@example.net",
+  "recipient": "registration@aiiot2027.example.org",
+  "conference_name": "AIIoT 2027",
+  "user_role": "PhD student (claimed)",
+  "questions": [
+    {
+      "id": "q1",
+      "business_area": "registration",
+      "text": "Can I still get the student registration rate?",
+      "request_type": "question"
+    },
+    {
+      "id": "q2",
+      "business_area": "registration",
+      "text": "I saw the student fee is USD 280 for early bird registration. Is that correct?",
+      "request_type": "question"
+    },
+    {
+      "id": "q3",
+      "business_area": "registration",
+      "text": "If I pay next week, will I still be able to get this price?",
+      "request_type": "question"
+    },
+    {
+      "id": "q4",
+      "business_area": "accommodation",
+      "text": "Do you have any recommended hotels near the conference venue?",
+      "request_type": "question"
+    },
+    {
+      "id": "q5",
+      "business_area": "accommodation",
+      "text": "I would prefer a hotel within walking distance, maybe with a special discount for conference participants.",
+      "request_type": "preference"
+    },
+    {
+      "id": "q6",
+      "business_area": "accommodation",
+      "text": "How much would it cost per night?",
+      "request_type": "question"
+    },
+    {
+      "id": "q7",
+      "business_area": "accommodation",
+      "text": "Is breakfast included?",
+      "request_type": "question"
+    },
+    {
+      "id": "q8",
+      "business_area": "invoice",
+      "text": "Can you issue an official invoice for my university's reimbursement?",
+      "request_type": "request"
+    },
+    {
+      "id": "q9",
+      "business_area": "invoice",
+      "text": "Can you include my university's full name and tax ID on the invoice?",
+      "request_type": "request"
+    },
+    {
+      "id": "q10",
+      "business_area": "invoice",
+      "text": "If possible, could you also send me the invoice before I make the payment?",
+      "request_type": "request"
+    }
+  ],
+  "extracted_entities": {
+    "paper_presentation_claim": "Claims to be presenting a paper at the conference",
+    "student_status_claim": "Claims to be a PhD student",
+    "quoted_early_bird_fee": "USD 280",
+    "payment_timing": "next week",
+    "accommodation_preferences": [
+      "hotels near the conference venue",
+      "within walking distance",
+      "special discount for conference participants",
+      "nightly price",
+      "breakfast included"
+    ],
+    "invoice_requirements": [
+      "official invoice for university reimbursement",
+      "university's full name",
+      "tax ID",
+      "invoice before payment"
+    ],
+    "language_notes": [
+      "Misspelling: 'recommanded' for 'recommended'.",
+      "Informal phrasing such as 'Quick Qs' and 'Sorry for asking so many questions!'."
+    ]
+  },
+  "requires_human_review": true,
+  "review_reason": "Invoice issuance, inclusion of university name/tax ID, and invoice-before-payment request require human review because invoice policy is unknown."
+}

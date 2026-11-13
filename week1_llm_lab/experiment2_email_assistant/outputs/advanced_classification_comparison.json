@@ -1,0 +1,34 @@
+{
+  "email_id": "G",
+  "expected_business_intents": [
+    "registration_inquiry",
+    "accommodation_inquiry",
+    "invoice_request"
+  ],
+  "single_label": {
+    "predicted_intent": "registration_inquiry",
+    "identified_business_intents": [
+      "registration_inquiry"
+    ],
+    "missed_business_intents": [
+      "accommodation_inquiry",
+      "invoice_request"
+    ],
+    "intent_coverage": 0.3333
+  },
+  "multi_label": {
+    "category_intents": [
+      "registration_inquiry",
+      "accommodation_inquiry",
+      "payment_inquiry"
+    ],
+    "identified_business_intents": [
+      "registration_inquiry",
+      "accommodation_inquiry",
+      "invoice_request"
+    ],
+    "missed_business_intents": [],
+    "intent_coverage": 1.0
+  },
+  "conclusion": "单标签分类只识别出一个业务主题，遗漏了同一封邮件中的住宿和发票请求；多标签分类完整覆盖注册、住宿和发票三类业务意图。"
+}

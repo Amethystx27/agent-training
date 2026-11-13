@@ -1,0 +1,6 @@
+{
+  "subject": "Re: Payment Confirmation and Invoice Request",
+  "body": "[HUMAN REVIEW REQUIRED]\n\nDear David Lee,\n\nThank you for your email regarding your registration payment and invoice request for ICCBDA 2027.\n\nWe are unable to confirm whether your payment has been received at this stage. The payment record requires review by the conference secretariat. We also note your request for an official invoice for university reimbursement; information about invoice issuance is not currently available, and this request requires review by the conference secretariat.\n\nThank you for your patience.\n\nBest regards,\nICCBDA 2027 Conference Secretariat",
+  "requires_human_review": true,
+  "review_reason": "Payment receipt status cannot be verified from the fact card, and the invoice request requires human review because no invoice policy is provided."
+}

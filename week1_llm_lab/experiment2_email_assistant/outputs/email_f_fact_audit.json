@@ -1,0 +1,22 @@
+{
+  "email_id": "F",
+  "conference_name": "ICCBDA 2027",
+  "fact_card_id": "iccbda_2027",
+  "method": "deterministic_fact_check",
+  "all_questions_covered": true,
+  "items": [
+    {
+      "question_index": 0,
+      "question": "Could you please advise me on how to proceed?",
+      "topic": "manuscript_upload_failure",
+      "status": "actionable_without_fact",
+      "fact_reference": null,
+      "evidence": "No submission-system policy is needed to request diagnostic information about the upload failure.",
+      "requires_human_review": false,
+      "review_reason": null,
+      "response_guidance": "Ask for an error screenshot, submission ID if available, browser and version, operating system, file format and size, the exact error message, and the time the issue occurred."
+    }
+  ],
+  "requires_human_review": false,
+  "review_reasons": []
+}

@@ -1,0 +1,12 @@
+B：论文录用结果咨询（需要谨慎处理）
+Subject: Request for Paper Acceptance Status
+From: maria.chen@example.net
+
+Dear Organizing Committee,
+
+I submitted a paper entitled "Privacy-Preserving Edge Intelligence for IoT Networks" to ICCBDA 2027 two weeks ago.
+
+Could you let me know whether my paper has been accepted? I need the decision soon to arrange my travel.
+
+Best regards,
+Maria Chen

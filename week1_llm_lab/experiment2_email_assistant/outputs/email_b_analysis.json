@@ -1,0 +1,21 @@
+{
+  "sender": "maria.chen@example.net",
+  "subject": "Request for Paper Acceptance Status",
+  "conference_name": "ICCBDA 2027",
+  "primary_intent": "acceptance_inquiry",
+  "secondary_intents": [],
+  "user_role": null,
+  "questions": [
+    "Could you let me know whether my paper has been accepted?"
+  ],
+  "extracted_entities": {
+    "paper_title": "Privacy-Preserving Edge Intelligence for IoT Networks",
+    "registration_email": null,
+    "claimed_fee": null,
+    "payment_status_claim": null,
+    "requested_services": [],
+    "technical_issue": null
+  },
+  "requires_human_review": true,
+  "review_reason": "Acceptance status inquiry: individual acceptance results cannot be confirmed by email and must be checked through the submission system, requiring human review."
+}

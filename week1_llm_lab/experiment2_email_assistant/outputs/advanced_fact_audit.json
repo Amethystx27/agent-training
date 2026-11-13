@@ -1,0 +1,138 @@
+{
+  "email_id": "G",
+  "conference_name": "AIIoT 2027",
+  "fact_card_id": "aiiot_2027",
+  "method": "deterministic_fact_check",
+  "all_questions_covered": true,
+  "items": [
+    {
+      "question_index": 0,
+      "question": "Can I still get the student registration rate?",
+      "business_area": "registration",
+      "topic": "student_rate_eligibility",
+      "status": "conditional",
+      "fact_reference": "student_eligibility",
+      "evidence": "A valid full-time student status and student ID or official enrollment certificate are required.",
+      "requires_human_review": false,
+      "review_reason": null,
+      "response_guidance": "State that the student rate requires valid full-time status and the specified proof. Do not claim the sender's status has been verified."
+    },
+    {
+      "question_index": 1,
+      "question": "I saw the student fee is USD 280 for early bird registration. Is that correct?",
+      "business_area": "registration",
+      "topic": "student_early_bird_fee",
+      "status": "supported",
+      "fact_reference": "registration_fees.student_author_early_bird",
+      "evidence": "The student author early-bird fee is USD 280.",
+      "requires_human_review": false,
+      "review_reason": null,
+      "response_guidance": "Confirm that the student author early-bird fee is USD 280."
+    },
+    {
+      "question_index": 2,
+      "question": "If I pay next week, will I still be able to get this price?",
+      "business_area": "registration",
+      "topic": "next_week_payment_price",
+      "status": "conditional",
+      "fact_reference": "early_bird_deadline",
+      "evidence": "The early-bird deadline is May 1, 2027, but the email date and proposed payment date are not provided.",
+      "requires_human_review": false,
+      "review_reason": null,
+      "response_guidance": "State that USD 280 applies if payment is completed by May 1, 2027 and eligibility requirements are met. Do not confirm that next week's payment will qualify."
+    },
+    {
+      "question_index": 3,
+      "question": "Do you have any recommended hotels near the conference venue?",
+      "business_area": "accommodation",
+      "topic": "hotel_recommendation",
+      "status": "unknown",
+      "fact_reference": "accommodation_information.hotel_recommendations",
+      "evidence": "Hotel recommendations have not been provided.",
+      "requires_human_review": false,
+      "review_reason": null,
+      "response_guidance": "Do not recommend a hotel. State that accommodation information has not yet been announced."
+    },
+    {
+      "question_index": 4,
+      "question": "I would prefer a hotel within walking distance, maybe with a special discount for conference participants.",
+      "business_area": "accommodation",
+      "topic": "walking_distance_and_conference_discount",
+      "status": "unknown",
+      "fact_reference": "accommodation_information.negotiated_conference_rate",
+      "evidence": "No hotel discount or walking-distance arrangement has been provided.",
+      "requires_human_review": false,
+      "review_reason": null,
+      "response_guidance": "Do not promise a hotel within walking distance or a conference discount."
+    },
+    {
+      "question_index": 5,
+      "question": "How much would it cost per night?",
+      "business_area": "accommodation",
+      "topic": "hotel_nightly_price",
+      "status": "unknown",
+      "fact_reference": "accommodation_information.nightly_price",
+      "evidence": "No hotel nightly price has been provided.",
+      "requires_human_review": false,
+      "review_reason": null,
+      "response_guidance": "Do not provide or estimate a nightly price."
+    },
+    {
+      "question_index": 6,
+      "question": "Is breakfast included?",
+      "business_area": "accommodation",
+      "topic": "breakfast_information",
+      "status": "unknown",
+      "fact_reference": "accommodation_information.breakfast_information",
+      "evidence": "No breakfast information has been provided.",
+      "requires_human_review": false,
+      "review_reason": null,
+      "response_guidance": "State that breakfast arrangements are not currently available."
+    },
+    {
+      "question_index": 7,
+      "question": "Can you issue an official invoice for my university's reimbursement?",
+      "business_area": "invoice",
+      "topic": "invoice_issuance",
+      "status": "unknown",
+      "fact_reference": "invoice_information.invoice_policy",
+      "evidence": "No invoice policy is provided.",
+      "requires_human_review": true,
+      "review_reason": "The invoice request requires human review because no invoice policy is provided.",
+      "response_guidance": "Do not promise an invoice. State that the request requires review by the conference secretariat."
+    },
+    {
+      "question_index": 8,
+      "question": "Can you include my university's full name and tax ID on the invoice?",
+      "business_area": "invoice",
+      "topic": "invoice_tax_id",
+      "status": "unknown",
+      "fact_reference": "invoice_information.tax_id_requirement",
+      "evidence": "No tax-ID requirement or invoice-content policy is provided.",
+      "requires_human_review": true,
+      "review_reason": "Invoice content and tax-ID handling require human review.",
+      "response_guidance": "Do not confirm that a university name or tax ID can be included. Refer the request for human review."
+    },
+    {
+      "question_index": 9,
+      "question": "If possible, could you also send me the invoice before I make the payment?",
+      "business_area": "invoice",
+      "topic": "invoice_before_payment",
+      "status": "unknown",
+      "fact_reference": "invoice_information.invoice_before_payment",
+      "evidence": "No policy on issuing an invoice before payment is provided.",
+      "requires_human_review": true,
+      "review_reason": "The pre-payment invoice request requires human review because no policy is provided.",
+      "response_guidance": "Do not promise an invoice before payment. Refer the request for human review."
+    }
+  ],
+  "known_count": 1,
+  "conditional_count": 2,
+  "unknown_count": 7,
+  "requires_human_review": true,
+  "review_reasons": [
+    "The invoice request requires human review because no invoice policy is provided.",
+    "Invoice content and tax-ID handling require human review.",
+    "The pre-payment invoice request requires human review because no policy is provided."
+  ]
+}

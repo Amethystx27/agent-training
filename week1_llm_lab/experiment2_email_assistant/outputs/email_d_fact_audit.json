@@ -1,0 +1,33 @@
+{
+  "email_id": "D",
+  "conference_name": "ICCBDA 2027",
+  "fact_card_id": "iccbda_2027",
+  "method": "deterministic_fact_check",
+  "all_questions_covered": true,
+  "items": [
+    {
+      "question_index": 0,
+      "question": "Could you recommend hotels near the conference venue?",
+      "topic": "hotel_recommendation",
+      "status": "unknown",
+      "fact_reference": "accommodation_information",
+      "evidence": "Accommodation information has not yet been announced.",
+      "requires_human_review": false,
+      "review_reason": null,
+      "response_guidance": "Do not recommend a hotel. State that accommodation information has not yet been announced."
+    },
+    {
+      "question_index": 1,
+      "question": "I would also appreciate information about transportation from Chengdu Tianfu International Airport to the university.",
+      "topic": "airport_transportation",
+      "status": "unknown",
+      "fact_reference": null,
+      "evidence": "No airport transportation information is provided in the fact card.",
+      "requires_human_review": false,
+      "review_reason": null,
+      "response_guidance": "Do not provide invented transportation details. Refer the sender to the conference secretariat or official announcements."
+    }
+  ],
+  "requires_human_review": false,
+  "review_reasons": []
+}

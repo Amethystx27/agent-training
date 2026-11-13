@@ -1,0 +1,24 @@
+{
+  "sender": "john.smith@example.net",
+  "subject": "Inquiry About Registration Fee and Submission Deadline",
+  "conference_name": "ICCBDA 2027",
+  "primary_intent": "registration_inquiry",
+  "secondary_intents": [
+    "submission_deadline"
+  ],
+  "user_role": null,
+  "questions": [
+    "Could you please confirm whether the registration fee for student authors is USD 350?",
+    "I would also like to know the full paper submission deadline, as I am preparing my manuscript."
+  ],
+  "extracted_entities": {
+    "paper_title": null,
+    "registration_email": null,
+    "claimed_fee": "USD 350 for student authors (to be confirmed)",
+    "payment_status_claim": null,
+    "requested_services": [],
+    "technical_issue": null
+  },
+  "requires_human_review": false,
+  "review_reason": null
+}
