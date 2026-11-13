@@ -1,0 +1,104 @@
+{
+  "run_at": "2026-11-13T19:22:06.620422+08:00",
+  "passed": 6,
+  "total": 6,
+  "cases": [
+    {
+      "number": "Q1",
+      "question": "现在新加坡几点？",
+      "passed": true,
+      "checks": [
+        "调用 get_current_time: True",
+        "时区为 Asia/Singapore: True",
+        "生成最终回答: True"
+      ],
+      "answer": "新加坡现在时间是 **2026年11月13日 19:21:52**，时区为 UTC+8。",
+      "rounds": 2,
+      "tool_call_count": 1,
+      "agent_ok": true,
+      "error_code": null,
+      "log_path": "C:\\Users\\Amethyst\\agent-training\\week1_llm_lab\\experiment3_function_calling\\logs\\basic\\run_20261113T192151_abad000ef9.jsonl"
+    },
+    {
+      "number": "Q2",
+      "question": "现在纽约几点？",
+      "passed": true,
+      "checks": [
+        "调用 get_current_time: True",
+        "时区为 America/New_York: True",
+        "生成最终回答: True"
+      ],
+      "answer": "纽约现在是 **2026-11-13（星期五）早上 06:21:54**，时区为 America/New_York，该时间比 UTC-5 晚 5 小时，目前处于冬令时。\n\n作为参考，你所在时区的北京时间是 **2026-11-13 19:21:54**（UTC+8），比纽约快 13 小时。",
+      "rounds": 2,
+      "tool_call_count": 2,
+      "agent_ok": true,
+      "error_code": null,
+      "log_path": "C:\\Users\\Amethyst\\agent-training\\week1_llm_lab\\experiment3_function_calling\\logs\\basic\\run_20261113T192153_6c0bf10080.jsonl"
+    },
+    {
+      "number": "Q3",
+      "question": "2027年2月15日距离今天还有多少天？",
+      "passed": true,
+      "checks": [
+        "调用 days_until: True",
+        "目标日期为 2027-02-15: True",
+        "剩余天数为 94: True",
+        "生成最终回答: True"
+      ],
+      "answer": "以今天 **2026年11月13日**（Asia/Shanghai 时区，当前时间为 19:21:57）为起点，距离 **2027年2月15日** 还有 **94 天**。",
+      "rounds": 2,
+      "tool_call_count": 2,
+      "agent_ok": true,
+      "error_code": null,
+      "log_path": "C:\\Users\\Amethyst\\agent-training\\week1_llm_lab\\experiment3_function_calling\\logs\\basic\\run_20261113T192155_41f11bbba5.jsonl"
+    },
+    {
+      "number": "Q4",
+      "question": "ICCBDA 2027 的截稿日期还有多久？",
+      "passed": true,
+      "checks": [
+        "调用 get_conference_deadline: True",
+        "调用 days_until: True",
+        "截止日期为 2027-02-15: True",
+        "日期参数来自会议结果: True"
+      ],
+      "answer": "**ICCBDA 2027 截稿日期：2027-02-15**\n\n- 从今天（2026-11-13）算起，还有 **94 天**。\n- 会议举办时间：2027-05-21 至 2027-05-23。\n\n如果你需要估算投稿准备时间，或按其他时区换算截止时刻，只要告诉我具体时间即可。",
+      "rounds": 3,
+      "tool_call_count": 2,
+      "agent_ok": true,
+      "error_code": null,
+      "log_path": "C:\\Users\\Amethyst\\agent-training\\week1_llm_lab\\experiment3_function_calling\\logs\\basic\\run_20261113T192157_c596db40c6.jsonl"
+    },
+    {
+      "number": "Q5",
+      "question": "东京明天上午9点对应北京时间几点？",
+      "passed": true,
+      "checks": [
+        "调用 convert_timezone: True",
+        "东京 09:00 对应北京 2026-11-14T08:00:00+08:00: True"
+      ],
+      "answer": "东京明天（2026-11-14）上午9点，对应北京时间 **2026-11-14 上午8点**。",
+      "rounds": 3,
+      "tool_call_count": 3,
+      "agent_ok": true,
+      "error_code": null,
+      "log_path": "C:\\Users\\Amethyst\\agent-training\\week1_llm_lab\\experiment3_function_calling\\logs\\basic\\run_20261113T192200_c190b77e4f.jsonl"
+    },
+    {
+      "number": "Q6",
+      "question": "查询不存在的会议 XYZ 2027 的截稿日期。",
+      "passed": true,
+      "checks": [
+        "调用 get_conference_deadline: True",
+        "返回 CONFERENCE_NOT_FOUND: True",
+        "如实生成失败说明: True"
+      ],
+      "answer": "查询失败：在会议数据库中未找到名为 **XYZ 2027** 的会议，错误码为 `CONFERENCE_NOT_FOUND`。\n\n因此我无法提供该会议的截稿日期，也不会编造任何信息。\n\n建议您：\n1. 确认会议名称是否完整或准确（例如是否含有全称、缩写、年份格式不同）；\n2. 或者提供会议的官方全称，我再帮您查询。",
+      "rounds": 2,
+      "tool_call_count": 1,
+      "agent_ok": true,
+      "error_code": null,
+      "log_path": "C:\\Users\\Amethyst\\agent-training\\week1_llm_lab\\experiment3_function_calling\\logs\\basic\\run_20261113T192204_578de614ee.jsonl"
+    }
+  ]
+}
