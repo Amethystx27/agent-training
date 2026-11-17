@@ -38,18 +38,14 @@ class ConferenceInfo(BaseModel):
     
 load_dotenv()
 client =OpenAI(
-    api_key="sk-mQ5jk2w75tpiGgZi232d06Cc79E6487fB8Cf54382cEcAc75",
+    api_key="",
     base_url="http://43.142.146.132:8000/v1",
 )
 input_text="""
-The International Workshop on Smart Networks 2027 will be held in Singapore on November 12–13, 2027.
-Important dates:
-- Abstract registration deadline: July 10, 2027
-- Full paper submission deadline: July 24, 2027
-- Acceptance notification: September 5, 2027
-- Early-bird registration deadline: October 1, 2027
-Topics include intelligent networking, edge computing, network automation, and AI-enabled network management.
-The registration fee is SGD 300 for students and SGD 480 for regular participants.
+Edge Intelligence Forum 2027 will take place in Chengdu, China, in October 2027.
+The forum welcomes submissions on edge intelligence, federated learning, Internet of Things, and network security. Authors should submit manuscripts through the online submission portal.
+The submission deadline is expected to be announced soon. Registration information will be published on the official website.
+The event is supported by the Center for Distributed Intelligence.
 """
 instruction="""
 你是一名学术会议信息抽取助手。
