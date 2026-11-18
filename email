@@ -1,0 +1,94 @@
+import os
+import json
+from openai import OpenAI
+from dotenv import load_dotenv
+load_dotenv()
+client=OpenAI(
+    api_key="",
+    base_url="http://43.142.146.132:8000/v1",
+)
+input_text="""
+Subject: Unable to Upload My Manuscript
+From: liu.yang@example.net
+Dear Technical Support Team,
+I am trying to upload my paper to the submission system, but the page keeps showing an error after I click the Submit button.
+I have tried using two different browsers, but the problem remains.
+Could you please advise me on how to proceed?
+Best regards,
+Yang Liu
+"""
+instruction1="""
+任务1:你是一名国际学术会议邮件分类助手。
+请分析邮件并返回 JSON，字段包括：
+sender, subject, conference_name, primary_intent, secondary_intents,
+user_role, questions, extracted_entities, requires_human_review,
+review_reason。
+分类只能使用：
+registration_inquiry, submission_deadline, acceptance_inquiry,
+payment_inquiry, accommodation_inquiry, certificate_request,
+paper_update_request, technical_issue, other。
+"""
+infor="""
+会议名称	ICCBDA 2027
+会议日期	May 21–23, 2027
+地点	Xihua University, Chengdu, China
+全文投稿截止日期	February 15, 2027
+学生作者注册费	USD 350
+普通作者注册费	USD 450
+听众注册费	USD 180
+住宿信息	尚未公布，请关注会议官方通知
+录用结果	只能通过投稿系统查询；邮件中不提供个人录用
+结论
+退款政策	未提供正式政策，必须转人工确认
+联系邮箱	iccbda2027@example.org
+"""
+rules1="""
+不确定的信息使用 null,不得将用户陈述当作已经核实的事实, 
+退款、付款争议、录用结果、作者信息变更必须人工审核,
+一封邮件有多个问题时全部提取,只输出合法 JSON。
+"""
+prompt1=f"""
+{input_text}
+{instruction1}
+{infor}
+{rules1}
+"""
+res_json=client.chat.completions.create(
+    model="deepseek-flash",
+         messages=[
+             {"role":"system","content":prompt1},
+             {"role":"user","content":"信息提取"},
+         ],
+    stream=False,
+    response_format={"type":"json_object"},
+    extra_body={"thinking":{"type":"enabled"}}
+)
+R1=res_json.choices[0].message.content
+print(res_json.choices[0].message.content)
+instruction2="""
+你是一名专业、礼貌的国际学术会议秘书。
+请根据原始邮件、邮件分析结果和“会议事实卡”生成英文回复草稿。
+"""
+rules2="""
+只使用会议事实卡明确提供的信息,不得承诺退款、确认付款或判断论文录用结果,
+对未提供的信息，说明目前无法确认，并建议联系秘书处,
+需要人工审核的邮件，生成谨慎的确认收悉草稿，并标注 [HUMAN REVIEW REQUIRED],
+输出 subject、body、requires_human_review、review_reason,
+不发送邮件，只生成草稿。
+"""
+prompt2=f"""
+{input_text}
+{R1}
+{instruction2}
+{infor}
+{rules2}
+"""
+res_english=client.chat.completions.create(
+    model="deepseek-flash",
+         messages=[
+             {"role":"system","content":prompt2},
+             {"role":"user","content":"英文回复"},
+         ],
+    stream=False,
+)
+print(res_english.choices[0].message.content)
