@@ -4,7 +4,7 @@ from openai import OpenAI
 from dotenv import load_dotenv
 load_dotenv()
 client=OpenAI(
-    api_key="sk-mQ5jk2w75tpiGgZi232d06Cc79E6487fB8Cf54382cEcAc75",
+    api_key="",
     base_url="http://43.142.146.132:8000/v1",
 )
 input_text="""
