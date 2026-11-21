@@ -1,0 +1,10 @@
+openai
+python-dotenv
+pydantic
+python-docx
+pypdf
+langchain-core
+langchain-text-splitters
+langchain-community
+faiss-cpu
+numpy

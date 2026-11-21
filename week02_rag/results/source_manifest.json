@@ -1,0 +1,42 @@
+[
+  {
+    "file": "01_CFP.docx",
+    "sha256": "c32193e652afa993b885332f24f34310b88c0eff6c4e14afe0befd681f6f2fea",
+    "bytes": 82996
+  },
+  {
+    "file": "02_注册须知及费用.docx",
+    "sha256": "f0fa6269b8d8dce69b0df8102573d539b853aea5622fad0ecbe68a7156b3ab23",
+    "bytes": 82866
+  },
+  {
+    "file": "03_住宿交通.docx",
+    "sha256": "50d5aa591886867b1b6a1f97e03c6f8838999a230f865e341ae0ea7b5f280543",
+    "bytes": 82759
+  },
+  {
+    "file": "04_投稿系统指南.docx",
+    "sha256": "859f5b50f291b033dd10f1ec3924b06d67354e4c7e7634b4a642a7af6b78f745",
+    "bytes": 82935
+  },
+  {
+    "file": "05_发票付款.docx",
+    "sha256": "0a713a1a982fe920d3c464be2e3479ae95d334f0a59748931b194dfb3f2a0d09",
+    "bytes": 82902
+  },
+  {
+    "file": "06_日程会场.docx",
+    "sha256": "4804627869b8b63d852ddcce83896c4c507b43188cdf29d04d2f982c18ec5e2f",
+    "bytes": 82685
+  },
+  {
+    "file": "07_FAQ.docx",
+    "sha256": "3a7bbf2e38b6c6ab0a754ac1b963dec90724e1bc12460840d08f5ebbdcbc715a",
+    "bytes": 82838
+  },
+  {
+    "file": "08_更正通知.docx",
+    "sha256": "fdd74e1919ee2070c30923ac287d9383cb327847ea20cd5fc8da5a1027f91676",
+    "bytes": 82649
+  }
+]
