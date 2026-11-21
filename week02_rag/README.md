@@ -13,6 +13,7 @@ week02_rag/
   index/               # FAISS索引+manifest（不入Git，可从原资料重建）
   src/rag.py           # 核心实现：解析/切分/Embedding/索引/检索/问答
   results/             # 解析日志、28题原始输出、逐题评价
+    screenshots/       # 运行截图（多跳问答/混合检索/直接问答/28题评估）
   run_experiments.py   # 实验3评估与参数对比
   requirements.txt
   requirements-lock.txt
