@@ -1,0 +1,105 @@
+{
+  "schema_version": "experiment1-v1",
+  "input_path": "C:\\Users\\Amethyst\\agent-training\\week2\\test1\\data\\raw",
+  "generated_at": "2026-11-17T08:28:46+00:00",
+  "file_count": 8,
+  "file_types": {
+    ".docx": 8
+  },
+  "document_count": 33,
+  "empty_text_count": 0,
+  "files": [
+    {
+      "source": "01_CFP.docx",
+      "sections": 5,
+      "paragraphs": 12,
+      "empty_paragraphs": 0,
+      "tables": 0,
+      "chars": 594,
+      "warnings": [],
+      "file_sha256": "c32193e652afa993b885332f24f34310b88c0eff6c4e14afe0befd681f6f2fea"
+    },
+    {
+      "source": "02_注册须知及费用.docx",
+      "sections": 4,
+      "paragraphs": 10,
+      "empty_paragraphs": 0,
+      "tables": 0,
+      "chars": 491,
+      "warnings": [],
+      "file_sha256": "f0fa6269b8d8dce69b0df8102573d539b853aea5622fad0ecbe68a7156b3ab23"
+    },
+    {
+      "source": "03_住宿交通.docx",
+      "sections": 4,
+      "paragraphs": 10,
+      "empty_paragraphs": 0,
+      "tables": 0,
+      "chars": 403,
+      "warnings": [],
+      "file_sha256": "50d5aa591886867b1b6a1f97e03c6f8838999a230f865e341ae0ea7b5f280543"
+    },
+    {
+      "source": "04_投稿系统指南.docx",
+      "sections": 4,
+      "paragraphs": 10,
+      "empty_paragraphs": 0,
+      "tables": 0,
+      "chars": 504,
+      "warnings": [],
+      "file_sha256": "859f5b50f291b033dd10f1ec3924b06d67354e4c7e7634b4a642a7af6b78f745"
+    },
+    {
+      "source": "05_发票付款.docx",
+      "sections": 4,
+      "paragraphs": 10,
+      "empty_paragraphs": 0,
+      "tables": 0,
+      "chars": 450,
+      "warnings": [],
+      "file_sha256": "0a713a1a982fe920d3c464be2e3479ae95d334f0a59748931b194dfb3f2a0d09"
+    },
+    {
+      "source": "06_日程会场.docx",
+      "sections": 4,
+      "paragraphs": 10,
+      "empty_paragraphs": 0,
+      "tables": 0,
+      "chars": 420,
+      "warnings": [],
+      "file_sha256": "4804627869b8b63d852ddcce83896c4c507b43188cdf29d04d2f982c18ec5e2f"
+    },
+    {
+      "source": "07_FAQ.docx",
+      "sections": 4,
+      "paragraphs": 10,
+      "empty_paragraphs": 0,
+      "tables": 0,
+      "chars": 413,
+      "warnings": [],
+      "file_sha256": "3a7bbf2e38b6c6ab0a754ac1b963dec90724e1bc12460840d08f5ebbdcbc715a"
+    },
+    {
+      "source": "08_更正通知.docx",
+      "sections": 4,
+      "paragraphs": 10,
+      "empty_paragraphs": 0,
+      "tables": 0,
+      "chars": 357,
+      "warnings": [],
+      "file_sha256": "fdd74e1919ee2070c30923ac287d9383cb327847ea20cd5fc8da5a1027f91676"
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "chunks": {
+    "chunk_count": 33,
+    "chunk_size": 600,
+    "chunk_overlap": 100,
+    "min_chars": 59,
+    "max_chars": 149,
+    "avg_chars": 110.06,
+    "unique_chunk_ids": 33
+  },
+  "chunks_path": "C:\\Users\\Amethyst\\agent-training\\week2\\test1\\data\\chunks.jsonl"
+}

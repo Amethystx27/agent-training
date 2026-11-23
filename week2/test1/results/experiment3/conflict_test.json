@@ -1,0 +1,96 @@
+{
+  "schema_version": "experiment3-v1",
+  "generated_at": "2026-11-17T09:28:07+00:00",
+  "isolated_from_index": true,
+  "question": "2027年6月18日09:00的开幕地点最终是A101还是A102？",
+  "answer": {
+    "answer": "无法确定最终地点：证据中存在冲突候选，2027年6月18日09:00开幕地点分别为A101[S1]和A102[S2]，且未提供明确优先级，需人工确认。",
+    "citations": [
+      {
+        "chunk_id": "conflict-test-1",
+        "source": "conflict_1.txt",
+        "locator": "冲突候选，段落1",
+        "quote": "隔离冲突片段A：2027年6月18日09:00，开幕地点为A101。"
+      },
+      {
+        "chunk_id": "conflict-test-2",
+        "source": "conflict_2.txt",
+        "locator": "冲突候选，段落2",
+        "quote": "隔离冲突片段B：2027年6月18日09:00，开幕地点为A102。"
+      }
+    ],
+    "needs_human_review": true
+  },
+  "mentions_both_candidates": true,
+  "marked_for_review": true,
+  "passed": true,
+  "raw_response": "{\"answer\":\"无法确定最终地点：证据中存在冲突候选，2027年6月18日09:00开幕地点分别为A101[S1]和A102[S2]，且未提供明确优先级，需人工确认。\",\"citations\":[{\"evidence_id\":\"S1\",\"quote\":\"隔离冲突片段A：2027年6月18日09:00，开幕地点为A101。\"},{\"evidence_id\":\"S2\",\"quote\":\"隔离冲突片段B：2027年6月18日09:00，开幕地点为A102。\"}],\"needs_human_review\":true}",
+  "retrieval": [
+    {
+      "query": "2027年6月18日09:00的开幕地点最终是A101还是A102？",
+      "k": 4,
+      "results": [
+        {
+          "chunk_id": "conflict-test-1",
+          "source": "conflict_1.txt",
+          "section": "冲突候选",
+          "locator": "冲突候选，段落1",
+          "score": 1.0
+        },
+        {
+          "chunk_id": "conflict-test-2",
+          "source": "conflict_2.txt",
+          "section": "冲突候选",
+          "locator": "冲突候选，段落2",
+          "score": 2.0
+        }
+      ]
+    },
+    {
+      "query": "会议更正通知中明确替代的最终有效信息",
+      "k": 4,
+      "results": [
+        {
+          "chunk_id": "conflict-test-1",
+          "source": "conflict_1.txt",
+          "section": "冲突候选",
+          "locator": "冲突候选，段落1",
+          "score": 1.0
+        },
+        {
+          "chunk_id": "conflict-test-2",
+          "source": "conflict_2.txt",
+          "section": "冲突候选",
+          "locator": "冲突候选，段落2",
+          "score": 2.0
+        }
+      ]
+    }
+  ],
+  "llm": {
+    "model": "deepseek-flash",
+    "finish_reason": "stop",
+    "elapsed_seconds": 2.539,
+    "usage": {
+      "completion_tokens": 320,
+      "prompt_tokens": 437,
+      "total_tokens": 757,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": null,
+        "audio_tokens": null,
+        "reasoning_tokens": 195,
+        "rejected_prediction_tokens": null,
+        "text_tokens": null
+      },
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "image_tokens": null,
+        "text_tokens": null
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 437
+    }
+  }
+}

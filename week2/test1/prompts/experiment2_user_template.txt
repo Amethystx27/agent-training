@@ -1,0 +1,17 @@
+用户问题：
+{question}
+
+证据：
+{evidence_context}
+
+请返回以下JSON结构：
+{
+  "answer": "基于证据的回答，每项事实使用[S1]等编号",
+  "citations": [
+    {"evidence_id": "S1", "quote": "证据中可逐字核对的原文片段"}
+  ],
+  "needs_human_review": false
+}
+
+如果证据不足，answer填写“资料未提供/需人工确认”，needs_human_review填写true，
+citations可以为空数组。不要自行生成文件名、chunk_id或证据编号。

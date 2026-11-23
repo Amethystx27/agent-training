@@ -1,0 +1,96 @@
+{
+  "schema_version": "experiment1-v1",
+  "verified_at": "2026-11-17",
+  "python_version": "3.12.10",
+  "dependencies_check": "passed",
+  "raw_files": {
+    "count": 8,
+    "format": "docx",
+    "total_bytes": 662630,
+    "unique_sha256": 8,
+    "empty_text_files": 0,
+    "parse_errors": 0,
+    "parse_warnings": 0
+  },
+  "chunks": {
+    "count": 33,
+    "unique_ids": 33,
+    "chunk_size": 600,
+    "chunk_overlap": 100,
+    "min_chars": 59,
+    "max_chars": 149,
+    "average_chars": 110.06,
+    "repeat_build_identical": true,
+    "sha256": "ba7644c4d9973e9b45a7d34fbc1c2d9bf2f32477617b26a60db564bad57e57e8"
+  },
+  "document_versions": {
+    "01": "current",
+    "02": "current",
+    "03": "current",
+    "04": "current",
+    "05": "current",
+    "06": "current",
+    "07": "current",
+    "08": "v2"
+  },
+  "embedding": {
+    "model": "text-embedding-v3",
+    "dimension": 1024,
+    "batch_size": 10,
+    "probe_seconds": 0.62
+  },
+  "index": {
+    "chunk_count": 33,
+    "embedding_dimension": 1024,
+    "distance_strategy": "DistanceStrategy.EUCLIDEAN_DISTANCE",
+    "files": [
+      "index.faiss",
+      "index.pkl",
+      "manifest.json"
+    ],
+    "trusted_local_marker": true
+  },
+  "restart_queries": [
+    {
+      "question": "学生作者早鸟价格是多少？",
+      "top_1_source": "02_注册须知及费用.docx",
+      "top_1_section": "费用表",
+      "top_1_locator": "5-6",
+      "top_1_score": 0.368676,
+      "required_evidence_in_top_4": true
+    },
+    {
+      "question": "最终全文截止时间？摘要也延期吗？",
+      "top_1_source": "08_更正通知.docx",
+      "top_1_section": "更正全文截止",
+      "top_1_locator": "7-8",
+      "top_1_score": 0.408146,
+      "required_evidence_in_top_4": true
+    },
+    {
+      "question": "智能会务分会最终在哪里？",
+      "top_1_source": "08_更正通知.docx",
+      "top_1_section": "更正分会场",
+      "top_1_locator": "9-10",
+      "top_1_score": 0.677379,
+      "required_evidence_in_top_4": true
+    }
+  ],
+  "offline_tests": {
+    "total": 7,
+    "passed": 7,
+    "features": [
+      "DOCX section and table parsing",
+      "empty document failure reporting",
+      "stable chunk IDs",
+      "document-level version propagation",
+      "JSONL round trip",
+      "FAISS index persistence and reload",
+      "stale source index rejection"
+    ]
+  },
+  "known_test_gaps": [
+    "The formal corpus contains no PDF files, so pypdf page extraction has no formal sample.",
+    "The formal corpus contains no Word tables; table parsing is covered only by a synthetic test."
+  ]
+}
